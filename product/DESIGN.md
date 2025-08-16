@@ -58,6 +58,8 @@ OathLock — "Put the oath on-chain, settle with truth."
 ## Stretch Goals
 
 - Goals
+  - CDP by coinbase
+  - Sequencer Level Security の“悪意Tx隔離”を前面に：エスクローのapproveやsettleをSLSの保護配下で実行＝ユーザー保護を訴求。Zircuitへのデプロイ＆検証が賞の要件そのもの。
   - Privy ulitization
     - UX improvement for users, with e-mail login, wallet creation and onramp
   - Oracles utilization
