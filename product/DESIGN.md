@@ -39,8 +39,8 @@ OathLock — "Put the oath on-chain, settle with truth."
 
 - Goals
   - Use accumulated Attestations to "introduce constraints on sellers"
-
-  
-
-
+    - 売り手から利用料をもらい、悪評が溜まってきた売り手に悪評をつけた購入者には後で利用料の一部を還元する
+    - 新規販売者の“初期上限”を設ける。Registry に maxOutstanding（同時オープン可能な Oath 総額）を持たせ、初期は小さく
+      - 悪評が増えると 上限さらに縮小（ゼロまで）
+      - 逃げでも大きく稼げない
 
