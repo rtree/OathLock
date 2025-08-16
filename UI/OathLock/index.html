@@ -1,447 +1,105 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #e8eaf6, #c5cae9);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oath Lock - Transaction Dispute</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-header">
+            <img src="img/oathlock-logo.png" alt="OATHLOCK" class="logo">
+            <div class="motto">Trust. Verify. Secure.</div>
+        </div>
+        <div class="dispute-card">
+            <div class="header">
+                <div class="participant seller">
+                    <h3>SELLER</h3>
+                    <div class="avatar">
+                        <div class="profile-icon"></div>
+                    </div>
+                    <h4>D. Carter</h4>
+                    <div class="stats">
+                        <div class="stat transactions-stat">
+                            <span class="stat-icon">📊</span>
+                            <span class="value">320</span>
+                            <span class="label">Trades</span>
+                        </div>
+                        <div class="stat complaints-stat">
+                            <span class="stat-icon">⚠️</span>
+                            <span class="value">12</span>
+                            <span class="label">Issues</span>
+                        </div>
+                    </div>
+                    <div class="issues">
+                        <div class="issue-item">
+                            <div class="diamond-icon"></div>
+                            <span class="issue-label">Counterfeit</span>
+                            <span class="issue-count">3</span>
+                        </div>
+                        <div class="issue-item">
+                            <div class="damaged-icon"></div>
+                            <span class="issue-label">Damaged</span>
+                            <span class="issue-count">5</span>
+                        </div>
+                        <div class="issue-item">
+                            <div class="box-icon"></div>
+                            <span class="issue-label">Undelivered</span>
+                            <span class="issue-count">4</span>
+                        </div>
+                    </div>
+                </div>
 
-.container {
-    width: 100%;
-    max-width: 800px;
-}
+                <div class="transaction-center">
+                    <div class="transaction-info">
+                        <h3>TRANSACTION</h3>
+                        <div class="product-image">
+                            <img src="img/polo-outfit.jpg" alt="Polo Ralph Lauren セットアップ" class="product-img" 
+                                 onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
+                            <div class="placeholder-text">商品画像</div>
+                        </div>
+                        <div class="price">$120.00</div>
+                        <div class="status-buttons">
+                            <button class="status-btn active">Sent</button>
+                            <button class="status-btn">Received</button>
+                        </div>
+                    </div>
+                </div>
 
-.dispute-card {
-    background: white;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin-top: 0;
-}
+                <div class="participant buyer">
+                    <h3>BUYER</h3>
+                    <div class="avatar">
+                        <div class="profile-icon female"></div>
+                    </div>
+                    <h4>A. Jones</h4>
+                    <div class="stats">
+                        <div class="stat transactions-stat">
+                            <span class="stat-icon">📊</span>
+                            <span class="value">60</span>
+                            <span class="label">Trades</span>
+                        </div>
+                        <div class="stat complaints-stat">
+                            <span class="stat-icon">⚠️</span>
+                            <span class="value">1</span>
+                            <span class="label">Issues</span>
+                        </div>
+                    </div>
+                    <div class="issues">
+                        <div class="issue-item">
+                            <div class="lock-icon"></div>
+                            <span class="issue-label">Undelivered</span>
+                            <span class="issue-count">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-.header {
-    display: flex;
-    align-items: stretch;
-    padding: 40px;
-    gap: 40px;
-}
-
-.participant {
-    flex: 1;
-    text-align: center;
-}
-
-.participant h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #666;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
-
-.avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #5c9bd5, #4682b4);
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.profile-icon {
-    width: 40px;
-    height: 40px;
-    background: #2c5282;
-    border-radius: 50%;
-    position: relative;
-}
-
-.profile-icon::before {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 16px;
-    height: 16px;
-    background: white;
-    border-radius: 50%;
-}
-
-.profile-icon::after {
-    content: '';
-    position: absolute;
-    bottom: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 28px;
-    height: 18px;
-    background: white;
-    border-radius: 14px 14px 0 0;
-}
-
-.profile-icon.female::after {
-    width: 24px;
-    height: 20px;
-    border-radius: 12px 12px 0 0;
-}
-
-.participant h4 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.stats {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 25px;
-    gap: 20px;
-}
-
-.stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stat .label {
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.stat .value {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-}
-
-.issues {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.issue-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-}
-
-.diamond-icon,
-.damaged-icon,
-.box-icon,
-.lock-icon {
-    width: 16px;
-    height: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.diamond-icon {
-    background: #5c9bd5;
-    transform: rotate(45deg);
-    border-radius: 2px;
-}
-
-.damaged-icon {
-    background: #5c9bd5;
-    border-radius: 50%;
-    position: relative;
-}
-
-.damaged-icon::after {
-    content: 'ﾃ�';
-    color: white;
-    font-size: 12px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.box-icon {
-    background: #5c9bd5;
-    border-radius: 2px;
-    position: relative;
-}
-
-.box-icon::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: 2px;
-    right: 2px;
-    height: 4px;
-    background: #4682b4;
-    border-radius: 1px;
-}
-
-.lock-icon {
-    background: #5c9bd5;
-    border-radius: 2px;
-    position: relative;
-}
-
-.lock-icon::before {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 4px;
-    right: 4px;
-    height: 6px;
-    border: 2px solid white;
-    border-bottom: none;
-    border-radius: 4px 4px 0 0;
-}
-
-.issue-label {
-    color: #5c9bd5;
-    font-weight: 500;
-}
-
-.issue-count {
-    color: #333;
-    font-weight: 600;
-    margin-left: auto;
-}
-
-.transaction-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-width: 200px;
-    border-left: 1px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
-    padding: 0 20px;
-}
-
-.transaction-info {
-    text-align: center;
-}
-
-.transaction-info h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #666;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-}
-
-.product-image {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 20px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.product-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-/* 逕ｻ蜒上′隱ｭ縺ｿ霎ｼ繧√↑縺��ｴ蜷医�繝励Ξ繝ｼ繧ｹ繝帙Ν繝繝ｼ */
-.product-image::before {
-    content: '逃';
-    font-size: 32px;
-    color: #666;
-    position: absolute;
-    z-index: 1;
-}
-
-.product-img[src*="polo-outfit.jpg"] {
-    position: relative;
-    z-index: 2;
-}
-
-.price {
-    font-size: 32px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.status-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.status-btn {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    background: white;
-    border-radius: 6px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.status-btn.active {
-    background: #f0f0f0;
-    border-color: #ccc;
-}
-
-.status-btn:hover {
-    background: #f5f5f5;
-}
-
-.footer {
-    padding: 30px 40px;
-    border-top: 1px solid #e0e0e0;
-    text-align: center;
-}
-
-.raise-dispute-btn {
-    background: #2c5282;
-    color: white;
-    border: none;
-    padding: 16px 40px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: background 0.3s;
-    width: 100%;
-    max-width: 300px;
-}
-
-.raise-dispute-btn:hover {
-    background: #1e3a5f;
-}
-
-.placeholder-text {
-    display: none;
-    font-size: 12px;
-    color: #666;
-    text-align: center;
-}
-
-.product-image.no-image .placeholder-text {
-    display: block;
-}
-
-.product-image.no-image::before {
-    content: '逃';
-    font-size: 24px;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.logo-header {
-    text-align: center;
-    margin-bottom: 5px;
-    padding: 25px 30px 25px 30px;
-    background: linear-gradient(135deg, #ffffff, #f8f9fa);
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.logo {
-    height: 130px;
-    width: auto;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1)) 
-            brightness(0) 
-            saturate(100%) 
-            invert(17%) 
-            sepia(85%) 
-            saturate(1342%) 
-            hue-rotate(202deg) 
-            brightness(94%) 
-            contrast(86%);
-    transition: transform 0.3s ease;
-}
-
-.logo:hover {
-    transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-    
-    .logo-header {
-        padding: 20px 20px 20px 20px;
-        margin-bottom: 3px;
-    }
-    
-    .logo {
-        height: 100px;
-    }
-    
-    .header {
-        flex-direction: column;
-        gap: 25px;
-        padding: 25px 20px;
-    }
-    
-    .participant h3 {
-        margin-bottom: 20px;
-    }
-    
-    .stats {
-        margin-bottom: 20px;
-        gap: 15px;
-    }
-    
-    .issues {
-        gap: 8px;
-    }
-    
-    .transaction-center {
-        border: none;
-        border-top: 1px solid #e0e0e0;
-        border-bottom: 1px solid #e0e0e0;
-        padding: 20px 0;
-    }
-    
-    .transaction-info h3 {
-        margin-bottom: 20px;
-    }
-    
-    .product-image {
-        width: 100px;
-        height: 100px;
-        margin: 0 auto 15px;
-    }
-    
-    .price {
-        font-size: 28px;
-        margin-bottom: 15px;
-    }
-    
-    .footer {
-        padding: 20px;
-    }
-    
-    .raise-dispute-btn {
-        padding: 14px 30px;
-        font-size: 15px;
-    }
-}
+            <div class="footer">
+                <button class="raise-dispute-btn">RAISE DISPUTE</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

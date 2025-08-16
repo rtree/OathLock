@@ -6,7 +6,9 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+    /* モノトーン: 黒とグレーのグラデーション */
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 30%, #2d2d2d 70%, #000000 100%);
+    background-attachment: fixed;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -16,47 +18,118 @@ body {
 
 .container {
     width: 100%;
-    max-width: 800px;
-}
+    max-w.issue-count {
+    background: linear-gradient(135deg, #555555, #333333);
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    min-width: 22px;
+    height: 22px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;}
 
 .dispute-card {
-    background: white;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     margin-top: 0;
+    border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 .header {
     display: flex;
     align-items: stretch;
-    padding: 40px;
-    gap: 40px;
+    padding: 32px 32px;
+    gap: 32px;
 }
 
 .participant {
     flex: 1;
     text-align: center;
+    background: rgba(248, 250, 252, 0.8);
+    border-radius: 20px;
+    padding: 28px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.participant.seller {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.8));
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.participant.buyer {
+    background: linear-gradient(135deg, rgba(248, 248, 248, 0.9), rgba(230, 230, 230, 0.8));
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+.participant:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.participant.seller:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1), rgba(240, 240, 240, 0.9));
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.participant.buyer:hover {
+    background: linear-gradient(135deg, rgba(248, 248, 248, 1), rgba(230, 230, 230, 0.9));
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .participant h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #666;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .avatar {
-    width: 80px;
-    height: 80px;
+    width: 84px;
+    height: 84px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #5c9bd5, #4682b4);
+    background: linear-gradient(135deg, #666666 0%, #333333 100%);
     margin: 0 auto 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.seller .avatar {
+    background: linear-gradient(135deg, #555555 0%, #222222 100%);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.buyer .avatar {
+    background: linear-gradient(135deg, #777777 0%, #444444 100%);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+}
+
+.seller .avatar:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+}
+
+.buyer .avatar:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
 }
 
 .profile-icon {
@@ -98,127 +171,341 @@ body {
 }
 
 .participant h4 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
-    color: #333;
+    color: #1a1a1a;
     margin-bottom: 20px;
+    letter-spacing: 0.5px;
 }
 
 .stats {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin-bottom: 25px;
-    gap: 20px;
+    gap: 14px;
 }
 
 .stat {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 240, 240, 0.9));
+    border-radius: 16px;
+    padding: 18px 8px;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 95px;
 }
 
-.stat .label {
-    font-size: 12px;
-    color: #666;
-    margin-bottom: 5px;
+.stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.stat:hover::before {
+    opacity: 1;
+}
+
+.stat:first-child {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(5, 150, 105, 0.04));
+    border-color: rgba(16, 185, 129, 0.15);
+}
+
+.stat:first-child::before {
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.stat:last-child {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(234, 88, 12, 0.04));
+    border-color: rgba(249, 115, 22, 0.15);
+}
+
+.stat:last-child::before {
+    background: linear-gradient(90deg, #f97316, #ea580c);
 }
 
 .stat .value {
-    font-size: 16px;
+    font-size: 26px;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 4px;
+    background: linear-gradient(135deg, #000000, #333333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.1;
+}
+
+.stat:first-child .value {
+    background: linear-gradient(135deg, #333333, #666666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat:last-child .value {
+    background: linear-gradient(135deg, #666666, #999999);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat .label {
+    font-size: 9px;
+    color: #555555;
     font-weight: 600;
-    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    opacity: 0.8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.2;
+}
+
+.stat-icon {
+    font-size: 18px;
+    margin-bottom: 6px;
+    display: block;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.stat:hover .stat-icon {
+    transform: scale(1.15);
 }
 
 .issues {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
 }
 
 .issue-item {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 14px;
+    gap: 12px;
+    font-size: 13px;
+    background: linear-gradient(135deg, rgba(230, 230, 230, 0.9), rgba(210, 210, 210, 0.7));
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    color: #333333;
+}
+
+.issue-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #666666, #333333);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.issue-item:hover {
+    background: linear-gradient(135deg, rgba(220, 220, 220, 1), rgba(200, 200, 200, 0.9));
+    transform: translateX(3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.issue-item:hover::before {
+    opacity: 1;
 }
 
 .diamond-icon,
 .damaged-icon,
 .box-icon,
 .lock-icon {
-    width: 16px;
-    height: 16px;
+    width: 24px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.diamond-icon {
-    background: #5c9bd5;
-    transform: rotate(45deg);
-    border-radius: 2px;
-}
-
-.damaged-icon {
-    background: #5c9bd5;
     border-radius: 50%;
     position: relative;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Counterfeit - 警告の三角形 */
+.diamond-icon {
+    background: linear-gradient(135deg, #666666 0%, #333333 100%);
+}
+
+.diamond-icon::before {
+    content: '!';
+    color: white;
+    font-weight: 900;
+    font-size: 14px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.diamond-icon::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background: #333333;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+/* Damaged - クラッシュ/破損 */
+.damaged-icon {
+    background: linear-gradient(135deg, #555555 0%, #222222 100%);
+}
+
+.damaged-icon::before {
+    content: '⚡';
+    font-size: 12px;
+    filter: brightness(0) invert(1);
 }
 
 .damaged-icon::after {
-    content: 'ﾃ�';
-    color: white;
-    font-size: 12px;
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background: #666666;
+    border-radius: 50%;
+    border: 1px solid white;
 }
 
+/* Undelivered - 停止/禁止マーク */
 .box-icon {
-    background: #5c9bd5;
-    border-radius: 2px;
-    position: relative;
+    background: linear-gradient(135deg, #777777 0%, #444444 100%);
+}
+
+.box-icon::before {
+    content: '✕';
+    color: white;
+    font-weight: 900;
+    font-size: 12px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .box-icon::after {
     content: '';
     position: absolute;
     top: -2px;
-    left: 2px;
-    right: 2px;
-    height: 4px;
-    background: #4682b4;
-    border-radius: 1px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background: #333333;
+    border-radius: 50%;
+    border: 1px solid white;
 }
 
+/* Lock/Undelivered - 鍵とアラート */
 .lock-icon {
-    background: #5c9bd5;
-    border-radius: 2px;
-    position: relative;
+    background: linear-gradient(135deg, #888888 0%, #555555 100%);
 }
 
 .lock-icon::before {
+    content: '🔒';
+    font-size: 10px;
+    filter: grayscale(1) brightness(0) invert(1);
+}
+
+.lock-icon::after {
     content: '';
     position: absolute;
-    top: 2px;
-    left: 4px;
-    right: 4px;
-    height: 6px;
-    border: 2px solid white;
-    border-bottom: none;
-    border-radius: 4px 4px 0 0;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    background: #666666;
+    border-radius: 50%;
+    border: 1px solid white;
+    animation: pulse 2s infinite;
+}
+
+/* アニメーション効果 */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+/* ホバー効果 */
+.diamond-icon:hover,
+.damaged-icon:hover,
+.box-icon:hover,
+.lock-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 5px 20px rgba(239, 68, 68, 0.3);
 }
 
 .issue-label {
-    color: #5c9bd5;
-    font-weight: 500;
+    color: #7c2d12;
+    font-weight: 600;
+    flex-grow: 1;
+    text-transform: capitalize;
 }
 
 .issue-count {
-    color: #333;
-    font-weight: 600;
-    margin-left: auto;
+    background: linear-gradient(135deg, #555555, #333333);
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    min-width: 22px;
+    height: 22px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: subtle-pulse 3s infinite;
+}
+
+@keyframes subtle-pulse {
+    0%, 100% {
+        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+    }
+    50% {
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+    }
 }
 
 .transaction-center {
@@ -227,9 +514,13 @@ body {
     align-items: center;
     justify-content: center;
     min-width: 200px;
-    border-left: 1px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
-    padding: 0 20px;
+    background: linear-gradient(135deg, rgba(245, 245, 245, 0.8), rgba(235, 235, 235, 0.6));
+    border-radius: 20px;
+    padding: 32px 24px;
+    margin: 0 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .transaction-info {
@@ -237,31 +528,39 @@ body {
 }
 
 .transaction-info h3 {
-    font-size: 16px;
-    font-weight: 600;
-    color: #666;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 24px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .product-image {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 20px;
-    border-radius: 8px;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 24px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.product-image:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .product-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 14px;
 }
 
 /* 逕ｻ蜒上′隱ｭ縺ｿ霎ｼ繧√↑縺��ｴ蜷医�繝励Ξ繝ｼ繧ｹ繝帙Ν繝繝ｼ */
@@ -280,9 +579,13 @@ body {
 
 .price {
     font-size: 32px;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 20px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #333333, #666666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .status-buttons {
@@ -292,47 +595,75 @@ body {
 }
 
 .status-btn {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    background: white;
-    border-radius: 6px;
-    font-size: 14px;
+    padding: 10px 20px;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    color: #333333;
 }
 
 .status-btn.active {
-    background: #f0f0f0;
-    border-color: #ccc;
+    background: linear-gradient(135deg, #333333, #666666);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.status-btn:hover {
-    background: #f5f5f5;
+.status-btn:not(.active):hover {
+    background: rgba(248, 250, 252, 0.9);
+    border-color: rgba(0, 0, 0, 0.25);
+    transform: translateY(-1px);
 }
 
 .footer {
-    padding: 30px 40px;
-    border-top: 1px solid #e0e0e0;
+    padding: 32px 40px;
+    background: rgba(240, 240, 240, 0.6);
     text-align: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .raise-dispute-btn {
-    background: #2c5282;
+    background: linear-gradient(135deg, #333333 0%, #666666 100%);
     color: white;
     border: none;
     padding: 16px 40px;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 700;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: all 0.3s ease;
     width: 100%;
     max-width: 300px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.raise-dispute-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
 }
 
 .raise-dispute-btn:hover {
-    background: #1e3a5f;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.raise-dispute-btn:hover::before {
+    left: 100%;
 }
 
 .placeholder-text {
@@ -356,29 +687,42 @@ body {
 .logo-header {
     text-align: center;
     margin-bottom: 5px;
-    padding: 25px 30px 25px 30px;
-    background: linear-gradient(135deg, #ffffff, #f8f9fa);
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 28px 32px;
+    background: white;
+    border-radius: 24px 24px 0 0;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(250, 204, 21, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .logo {
-    height: 130px;
+    height: 120px;
     width: auto;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1)) 
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08)) 
             brightness(0) 
             saturate(100%) 
-            invert(17%) 
-            sepia(85%) 
-            saturate(1342%) 
-            hue-rotate(202deg) 
-            brightness(94%) 
-            contrast(86%);
-    transition: transform 0.3s ease;
+            invert(23%) 
+            sepia(12%) 
+            saturate(1034%) 
+            hue-rotate(188deg) 
+            brightness(91%) 
+            contrast(95%);
+    transition: all 0.3s ease;
+    opacity: 0.9;
 }
 
 .logo:hover {
     transform: scale(1.05);
+}
+
+.motto {
+    font-size: 16px;
+    font-weight: 600;
+    color: #475569;
+    margin-top: 12px;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    font-style: italic;
 }
 
 @media (max-width: 768px) {
@@ -407,11 +751,57 @@ body {
     
     .stats {
         margin-bottom: 20px;
-        gap: 15px;
+        gap: 10px;
+    }
+    
+    .stat {
+        padding: 16px 8px;
+        min-height: 80px;
+    }
+    
+    .stat .value {
+        font-size: 22px;
+        margin-bottom: 3px;
+    }
+    
+    .stat .label {
+        font-size: 9px;
+        letter-spacing: 0.3px;
+    }
+    
+    .stat-icon {
+        font-size: 16px;
+        margin-bottom: 4px;
     }
     
     .issues {
         gap: 8px;
+    }
+    
+    .issue-item {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+    
+    .diamond-icon,
+    .damaged-icon,
+    .box-icon,
+    .lock-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .diamond-icon::before,
+    .damaged-icon::before,
+    .box-icon::before {
+        font-size: 10px;
+    }
+    
+    .issue-count {
+        min-width: 20px;
+        height: 20px;
+        font-size: 10px;
+        padding: 3px 6px;
     }
     
     .transaction-center {
