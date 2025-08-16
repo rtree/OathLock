@@ -43,7 +43,8 @@ https://oathlock.ngrok.io
     - Stargate Bridge (stargate.finance)
     - PunchSwap
   - EAS
-    - https://flow.easscan.credora.io
+    - Explorer
+      - https://flow.easscan.credora.io
     - SchemaRegistry.sol (Ethereum Attestation Service)
       - 0xB0cF748a05AEA8D59e15834446CFC95bcFF510F0
     - EAS.sol (Ethereum Attestation Service)
@@ -57,3 +58,16 @@ https://oathlock.ngrok.io
     - FLOW
   - Block Explorer
     - https://evm-testnet.flowscan.io
+  - USDC
+    - USDC (stgUSDC)
+      - XXX
+  - Bridge/DEX
+    - Stargate Bridge (stargate.finance)
+    - PunchSwap
+  - EAS
+    - Explorer
+      - https://flow-testnet.easscan.credora.io
+    - SchemaRegistry.sol (Ethereum Attestation Service)
+      - 0x97900F59828Da4187607Cb8F84f49e3944199d18
+    - EAS.sol (Ethereum Attestation Service)
+      - 0xBCF2dA8f82fb032A2474c92Ec5b70C95A83fc0cc
