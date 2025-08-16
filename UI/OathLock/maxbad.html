@@ -2,10 +2,38 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oath Lock - Transaction Dispute</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        .container {
+            position: relative;
+            background: white;
+            border-radius: 16px;
+            padding: 90px 30px 30px 30px;
+            margin: 0 auto;
+            margin-top: 5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .dispute-logo {
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 90px !important;
+            width: auto;
+            z-index: 10;
+        }
+        .dispute-card {
+            background: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            margin-top: -40px;
+        }
+        .transaction-info h3 {
+            position: relative;
+            text-align: center;
+        }
         /* Override for maxbad.html - hide placeholder text */
         .product-image::before {
             display: none !important;
@@ -17,10 +45,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo-header">
-            <img src="img/oathlock-logo.png" alt="OATHLOCK" class="logo">
-            <div class="motto">Trust. Verify. Secure.</div>
-        </div>
+        <img src="img/oathlock-logo.png" alt="OATHLOCK" class="dispute-logo">
         <div class="dispute-card">
             <div class="header">
                 <div class="participant buyer">
