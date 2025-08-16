@@ -18,15 +18,10 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
 [Link to contract address](https://github.com/rtree/OathLock/blob/main/product/contract/ignition/deployments/chain-48900/deployed_addresses.json)
 
 
-
----
-
 ## 🌐 You want to take a look? Here is!
 
 - **E-commerce demo:** <https://oathlock.ngrok.io/ui/ethereum-collection.html>
 - **App URL:** <https://oathlock.ngrok.io>
-
----
 
 ## ✨ MVP — What works today
 
