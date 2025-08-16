@@ -4,13 +4,16 @@
 
 A trust-minimized escrow contract for physical-goods commerce on EVM-compatible chains. OathLock aligns incentives with a **seller-favored, fraud-resistant design**, while keeping **all transaction events and disputes transparent on-chain** via attestations.
 
-This project runs on:
 
-<img width="161" height="150" alt="image" src="https://github.com/user-attachments/assets/689b0530-3e55-4f5e-bc6d-1c58053468a7" /> Flow 0x0FBF8E4536f40831EE7eC35E2127D8a6580Bdee7
+## This project runs on:
 
-and
+### Flow
+<img width="161" height="150" alt="image" src="https://github.com/user-attachments/assets/689b0530-3e55-4f5e-bc6d-1c58053468a7" />
+0x0FBF8E4536f40831EE7eC35E2127D8a6580Bdee7
 
-<img width="139" height="55" alt="image" src="https://github.com/user-attachments/assets/4bbd05b1-d251-4354-aff8-2d83fb42a580" /><img width="59" height="55" alt="image" src="https://github.com/user-attachments/assets/bdc10076-7214-4bd9-b4f9-4c1f39a9f057" />Zircuit 0x76D72a4bf89Bb2327759826046FabE9BDA884E8B
+### ZCirtuit
+<img width="139" height="55" alt="image" src="https://github.com/user-attachments/assets/4bbd05b1-d251-4354-aff8-2d83fb42a580" /><img width="59" height="55" alt="image" src="https://github.com/user-attachments/assets/bdc10076-7214-4bd9-b4f9-4c1f39a9f057" />
+0x76D72a4bf89Bb2327759826046FabE9BDA884E8B
 
 
 
