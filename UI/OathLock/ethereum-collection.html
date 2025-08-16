@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereum Global Collection - Premium Fashion</title>
+    <link rel="stylesheet" href="ethereum-collection.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Ethereum Global Collection</div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#collection">Collection</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Premium Fashion Collection</h1>
+            <p>Discover exclusive Ralph Lauren pieces with blockchain-verified authenticity. Where luxury meets innovation.</p>
+            <a href="#collection" class="cta-button">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="filter-group">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option value="all">All Items</option>
+                        <option value="sets">Sets & Suits</option>
+                        <option value="polo">Polo Shirts</option>
+                        <option value="sweatwear">Sweatwear</option>
+                        <option value="formal">Formal Wear</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="price">Price Range</label>
+                    <select id="price">
+                        <option value="all">All Prices</option>
+                        <option value="under50">Under $500</option>
+                        <option value="50-100">$500 - $1000</option>
+                        <option value="over100">Over $1000</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sort">Sort By</label>
+                    <select id="sort">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest First</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="collection">
+        <div class="container">
+            <h2 class="section-title">Featured Collection</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/product1.jpg" alt="Polo Ralph Lauren Navy Set">
+                        <div class="product-badge">Premium</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Polo Ralph Lauren Color Shirt & Shorts Set Navy</h3>
+                        <div class="product-price">$339.90</div>
+                        <ul class="product-features">
+                            <li>100% Cotton Terry</li>
+                            <li>Navy Blue Classic</li>
+                            <li>Free Shipping Included</li>
+                            <li>Authentic Guarantee</li>
+                        </ul>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-secondary">♡</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/product2.jpg" alt="Polo Ralph Lauren Terry Set">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Polo Ralph Lauren Terry Collar Shirt & Shorts Set</h3>
+                        <div class="product-price">$340.00</div>
+                        <ul class="product-features">
+                            <li>Classic Terry Design</li>
+                            <li>Matching Shorts</li>
+                            <li>Summer Collection</li>
+                            <li>Premium Quality</li>
+                        </ul>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-secondary">♡</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/product3.jpg" alt="Polo Ralph Lauren Set">
+                        <div class="product-badge">Sale</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Polo Ralph Lauren Polo Shirt & Shorts Set</h3>
+                        <div class="product-price">$399.00</div>
+                        <ul class="product-features">
+                            <li>Cotton Terry Blend</li>
+                            <li>Button-Down Style</li>
+                            <li>Comfortable Fit</li>
+                            <li>Timeless Design</li>
+                        </ul>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-secondary">♡</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/product4.jpg" alt="Polo Ralph Lauren Set White">
+                        <div class="product-badge">Limited</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Polo Ralph Lauren Logo Polo Shirt & Shorts Set</h3>
+                        <div class="product-price">$398.90</div>
+                        <ul class="product-features">
+                            <li>Iconic Logo Design</li>
+                            <li>Premium Cotton Blend</li>
+                            <li>Athletic Cut</li>
+                            <li>Limited Edition</li>
+                        </ul>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-secondary">♡</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/product5.jpg" alt="Polo Ralph Lauren Navy Close-up">
+                        <div class="product-badge">Exclusive</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ralph Lauren Elegant Terry Collar Set</h3>
+                        <div class="product-price">$364.00</div>
+                        <ul class="product-features">
+                            <li>Designer Collection</li>
+                            <li>Terry Collar Design</li>
+                            <li>Relaxed Fit</li>
+                            <li>Summer Essential</li>
+                        </ul>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-secondary">♡</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/product6.jpg" alt="Ralph Lauren Grey Set">
+                        <div class="product-badge">Premium</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ralph Lauren Classic Polo Set</h3>
+                        <div class="product-price">$445.00</div>
+                        <ul class="product-features">
+                            <li>Classic Polo Style</li>
+                            <li>Sophisticated Grey</li>
+                            <li>Premium Material</li>
+                            <li>Tailored Fit</li>
+                        </ul>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-secondary">♡</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/product7.jpg" alt="Polo Ralph Lauren Casual Set">
+                        <div class="product-badge">Comfort</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ralph Lauren Casual Polo Set</h3>
+                        <div class="product-price">$362.50</div>
+                        <ul class="product-features">
+                            <li>Cozy Cotton Blend</li>
+                            <li>Relaxed Fit</li>
+                            <li>Casual Luxury</li>
+                            <li>All-Day Comfort</li>
+                        </ul>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-secondary">♡</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/product8.jpg" alt="Ralph Lauren Premium Set">
+                        <div class="product-badge">Special</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ralph Lauren Premium Polo Collection</h3>
+                        <div class="product-price">$485.00</div>
+                        <ul class="product-features">
+                            <li>Premium Collection</li>
+                            <li>Sophisticated Design</li>
+                            <li>High-Quality Fabric</li>
+                            <li>Limited Release</li>
+                        </ul>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-secondary">♡</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 9 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/product9.jpg" alt="Ralph Lauren Classic Navy">
+                        <div class="product-badge">Luxury</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ralph Lauren Classic Navy Collection</h3>
+                        <div class="product-price">$425.00</div>
+                        <ul class="product-features">
+                            <li>Classic Navy Style</li>
+                            <li>Designer Collection</li>
+                            <li>Premium Materials</li>
+                            <li>Timeless Appeal</li>
+                        </ul>
+                        <div class="product-actions">
+                            <a href="product-detail.html" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-secondary">♡</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Premium Items</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Countries Served</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10k+</h3>
+                    <p>Happy Customers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Authenticity Guarantee</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Ethereum Global Collection</h4>
+                    <p>We specialize in premium Ralph Lauren fashion, bringing you authentic luxury pieces with blockchain verification and worldwide delivery.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#collection">Collection</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect With Us</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ethereum Global Collection. All rights reserved. | Powered by Blockchain Technology</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

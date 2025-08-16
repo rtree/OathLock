@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ralph Lauren Classic Short-Sleeve Polo Set - Ethereum Global Collection</title>
+    <link rel="stylesheet" href="ethereum-collection.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles for product detail page */
+        .product-detail {
+            padding: 2rem 0;
+            background: white;
+        }
+        
+        .product-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .product-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border: 1px solid #e5e5e5;
+        }
+        
+        .image-thumbnails {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+        }
+        
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 1px solid #e5e5e5;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .thumbnail:hover,
+        .thumbnail.active {
+            border-color: #000;
+        }
+        
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .breadcrumb {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            color: #000;
+        }
+        
+        .product-title {
+            font-size: 2rem;
+            font-weight: 300;
+            line-height: 1.3;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-subtitle {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        
+        .original-price {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .discount {
+            background: #000;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .product-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .option-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .size-options {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .size-option {
+            padding: 0.75rem 1rem;
+            border: 1px solid #e5e5e5;
+            background: white;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .size-option:hover,
+        .size-option.selected {
+            border-color: #000;
+            background: #000;
+            color: white;
+        }
+        
+        .size-option.unavailable {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            max-width: 120px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #e5e5e5;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+        }
+        
+        .quantity-btn:hover {
+            border-color: #000;
+        }
+        
+        .quantity-input {
+            width: 60px;
+            height: 30px;
+            border: 1px solid #e5e5e5;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+        
+        .add-to-cart {
+            background: #000;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        .add-to-cart:hover {
+            background: #333;
+        }
+        
+        .add-to-cart:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .product-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .wishlist-btn {
+            background: none;
+            border: 1px solid #e5e5e5;
+            padding: 0.75rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .wishlist-btn:hover {
+            border-color: #000;
+        }
+        
+        .shipping-info {
+            padding: 1.5rem;
+            background: #f8f8f8;
+            margin: 1rem 0;
+        }
+        
+        .shipping-info h4 {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .shipping-info p {
+            font-size: 0.875rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .product-description {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 0 20px;
+        }
+        
+        .description-tabs {
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 1rem 0;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .tab-button.active {
+            border-bottom-color: #000;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .description-text {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        .details-list {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0.5rem 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .details-list dt {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+        
+        .details-list dd {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .product-header {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .main-image {
+                height: 400px;
+            }
+            
+            .product-title {
+                font-size: 1.5rem;
+            }
+            
+            .size-options {
+                justify-content: center;
+            }
+            
+            .tab-buttons {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .tab-button {
+                text-align: left;
+                padding: 0.75rem 0;
+            }
+            
+            .details-list {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="ethereum-collection.html" style="color: white; text-decoration: none;">Ethereum Global Collection</a>
+                </div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="ethereum-collection.html">Home</a></li>
+                        <li><a href="ethereum-collection.html#collection">Collection</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Detail Section -->
+    <main class="product-detail">
+        <div class="product-header">
+            <!-- Product Images -->
+            <div class="product-images">
+                <img src="img/product1.jpg" alt="Ralph Lauren Classic Polo Set" class="main-image" id="mainImage">
+                <div class="image-thumbnails">
+                    <img src="img/product1.jpg" alt="Front view" class="thumbnail active" onclick="changeMainImage(this)">
+                    <img src="img/product2.jpg" alt="Side view" class="thumbnail" onclick="changeMainImage(this)">
+                    <img src="img/product3.jpg" alt="Back view" class="thumbnail" onclick="changeMainImage(this)">
+                    <img src="img/product4.jpg" alt="Detail view" class="thumbnail" onclick="changeMainImage(this)">
+                </div>
+            </div>
+
+            <!-- Product Information -->
+            <div class="product-info">
+                <nav class="breadcrumb">
+                    <a href="ethereum-collection.html">Home</a> > 
+                    <a href="ethereum-collection.html#collection">Collection</a> > 
+                    <span>Polo Set</span>
+                </nav>
+
+                <h1 class="product-title">Ralph Lauren Classic Short-Sleeve Polo Set</h1>
+                <p class="product-subtitle">Premium Cotton Polo Shirt & Shorts Set</p>
+
+                <div class="product-price">
+                    <span class="current-price">$89.00</span>
+                    <span class="original-price">$120.00</span>
+                    <span class="discount">26% OFF</span>
+                </div>
+
+                <div class="product-options">
+                    <div class="option-group">
+                        <label class="option-label">Size</label>
+                        <div class="size-options">
+                            <div class="size-option" onclick="selectSize(this)">XS</div>
+                            <div class="size-option" onclick="selectSize(this)">S</div>
+                            <div class="size-option selected" onclick="selectSize(this)">M</div>
+                            <div class="size-option" onclick="selectSize(this)">L</div>
+                            <div class="size-option" onclick="selectSize(this)">XL</div>
+                            <div class="size-option unavailable">XXL</div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label class="option-label">Quantity</label>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" onclick="changeQuantity(-1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="10" id="quantity">
+                            <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-actions">
+                    <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+                    <button class="wishlist-btn">♡ Add to Wishlist</button>
+                </div>
+
+                <div class="shipping-info">
+                    <h4>Free Shipping</h4>
+                    <p>Free standard shipping on orders over $75. Express shipping available at checkout.</p>
+                    <h4 style="margin-top: 1rem;">Returns</h4>
+                    <p>30-day returns with original tags. See our return policy for details.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Description -->
+        <div class="product-description">
+            <div class="description-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="showTab('description')">Description</button>
+                    <button class="tab-button" onclick="showTab('details')">Details</button>
+                    <button class="tab-button" onclick="showTab('care')">Care Instructions</button>
+                </div>
+            </div>
+
+            <div id="description" class="tab-content active">
+                <div class="description-text">
+                    <p>Experience the timeless elegance of Ralph Lauren with this classic polo set. Crafted from premium cotton pique, this set combines comfort with sophisticated style. The polo shirt features the iconic Ralph Lauren polo player embroidery and a comfortable regular fit, while the coordinating shorts offer both style and versatility.</p>
+                    
+                    <p>Perfect for casual weekends, country club events, or vacation wear, this set embodies the quintessential American style that Ralph Lauren is renowned for. The breathable cotton fabric ensures all-day comfort, while the classic design ensures this piece will remain stylish for years to come.</p>
+                </div>
+            </div>
+
+            <div id="details" class="tab-content">
+                <dl class="details-list">
+                    <dt>Material</dt>
+                    <dd>100% Cotton Pique</dd>
+                    
+                    <dt>Fit</dt>
+                    <dd>Regular Fit</dd>
+                    
+                    <dt>Origin</dt>
+                    <dd>Imported</dd>
+                    
+                    <dt>Style Number</dt>
+                    <dd>RL-PS-SET-001</dd>
+                    
+                    <dt>Season</dt>
+                    <dd>Spring/Summer</dd>
+                    
+                    <dt>Collection</dt>
+                    <dd>Classic Collection</dd>
+                </dl>
+            </div>
+
+            <div id="care" class="tab-content">
+                <div class="description-text">
+                    <ul style="list-style-type: disc; margin-left: 1.5rem;">
+                        <li>Machine wash cold with like colors</li>
+                        <li>Use non-chlorine bleach when needed</li>
+                        <li>Tumble dry low heat</li>
+                        <li>Iron on low heat if needed</li>
+                        <li>Do not dry clean</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Image gallery functionality
+        function changeMainImage(thumbnail) {
+            const mainImage = document.getElementById('mainImage');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            
+            mainImage.src = thumbnail.src;
+            
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            thumbnail.classList.add('active');
+        }
+
+        // Size selection
+        function selectSize(sizeElement) {
+            if (sizeElement.classList.contains('unavailable')) return;
+            
+            const sizes = document.querySelectorAll('.size-option');
+            sizes.forEach(size => size.classList.remove('selected'));
+            sizeElement.classList.add('selected');
+        }
+
+        // Quantity management
+        function changeQuantity(delta) {
+            const quantityInput = document.getElementById('quantity');
+            const currentValue = parseInt(quantityInput.value);
+            const newValue = currentValue + delta;
+            
+            if (newValue >= 1 && newValue <= 10) {
+                quantityInput.value = newValue;
+            }
+        }
+
+        // Tab functionality
+        function showTab(tabName) {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => button.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        // Add to cart functionality
+        function addToCart() {
+            const selectedSize = document.querySelector('.size-option.selected');
+            const quantity = document.getElementById('quantity').value;
+            
+            if (!selectedSize) {
+                alert('Please select a size');
+                return;
+            }
+            
+            alert(`Added to cart: Ralph Lauren Polo Set (Size: ${selectedSize.textContent}, Quantity: ${quantity})`);
+        }
+
+        // Initialize quantity input handlers
+        document.addEventListener('DOMContentLoaded', function() {
+            const quantityInput = document.getElementById('quantity');
+            
+            quantityInput.addEventListener('change', function() {
+                const value = parseInt(this.value);
+                if (isNaN(value) || value < 1) {
+                    this.value = 1;
+                } else if (value > 10) {
+                    this.value = 10;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
