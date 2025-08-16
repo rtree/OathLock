@@ -28,12 +28,10 @@ OathLock — "Put the oath on-chain, settle with truth."
 
 - Malicious seller: As non-delivery/counterfeit disputes increase, reputation deteriorates on Attestation → becomes untrustworthy on OathLock.
 
-- Malicious buyer: Even if they report issues, USDC doesn't return to them, so there's no incentive for free-riding.
-
-　⇒ Adopted "Model A: Seller-favored"
-        Model A (0%): In disputes, buyer gets zero refund. Only bad reputation can be left.
-        Model B (100%): In disputes, buyer gets full refund. However, this strengthens buyer's fraud incentive. Buyer-favored.
-        Model C (0 < x < 100): Middle ground between Model A and Model B. Expected values of risk and malice vary, but there's no universally acceptable standard.
+- Malicious buyer: Even if they report issues, USDC doesn't return to them, so there's no incentive for free-riding. -> Adopted "Model A: Seller-favored", among following candidates:
+  - Model A (0%): In disputes, buyer gets zero refund. Only bad reputation can be left.
+  - Model B (100%): In disputes, buyer gets full refund. However, this strengthens buyer's fraud incentive. Buyer-favored.
+  - Model C (0 < x < 100): Middle ground between Model A and Model B. Expected values of risk and malice vary, but there's no universally acceptable standard.
 
 ## Stretch Goals
 
