@@ -27,6 +27,7 @@ https://oathlock.ngrok.io
 
 ## Network info
 
+### Flow
 - Flow EVM Mainnet
   - RPC Endpoint
     - https://mainnet.evm.nodes.onflow.org
@@ -60,7 +61,7 @@ https://oathlock.ngrok.io
     - https://evm-testnet.flowscan.io
   - USDC
     - USDC (stgUSDC)
-      - XXX
+      - XXX [Made for this project as mimic.]
   - Bridge/DEX
     - Stargate Bridge (stargate.finance)
     - PunchSwap
