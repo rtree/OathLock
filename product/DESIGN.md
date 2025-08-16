@@ -8,27 +8,21 @@ OathLock — "Put the oath on-chain, settle with truth."
 
 ### MVP: How to use
 
-  1. The buyer connects to OathLock and deposits an Oath (seller address + escrow expiration date + USDC).
-      Before depositing, they can view the seller's past Attestations and decide whether to proceed with the transaction.
+  1. The buyer connects to OathLock and deposits an Oath (seller address + escrow expiration date + USDC).Before depositing, they can view the seller's past Attestations and decide whether to proceed with the transaction.
 
-  2. The seller connects to OathLock, and if there are no issues, ships the product and presses **"Shipped"**. Before pressing, they can verify:
-        - Oath contents
-        - Buyer's OathLock-related Attestations
-      If there are issues, they don't ship and end the transaction (refund to buyer after expiration).
+  2. The seller connects to OathLock, and if there are no issues, ships the product and presses **"Shipped"**. If there are issues, they don't ship and end the transaction (refund to buyer after expiration), as they can verify before pressing:
+     - Oath contents
+     - Buyer's OathLock-related Attestations
 
-  3. After the buyer receives the product and inspects it, if there are no problems, they press **"Product inspection passed"**.
-      This triggers **USDC transfer to the seller even before the expiration date**.
+  3. After the buyer receives the product and inspects it, if there are no problems, they press **"Product inspection passed"**. This triggers **USDC transfer to the seller even before the expiration date**.
 
-  4. If the buyer reports **"Not delivered/Counterfeit" with evidence URL**, the transaction is treated as failed and
-      USDC is sent to the seller (※only reputation changes). Simultaneously, a record is left in the Attestation:
-
-        - Buyer side: Purchase canceled due to non-delivery/counterfeit
-        - Seller side: Transaction ended due to dispute
+  4. If the buyer reports **"Not delivered/Counterfeit" with evidence URL**, the transaction is treated as failed and USDC is sent to the seller (※only reputation changes). Simultaneously, a record is left in the Attestation:
+     - Buyer side: Purchase canceled due to non-delivery/counterfeit
+     - Seller side: Transaction ended due to dispute
 
   5. When expiration date is reached:
-
-        - Before shipping: Full refund to buyer
-        - After shipping: Full payment to seller
+     - Before shipping: Full refund to buyer
+     - After shipping: Full payment to seller
 
 ### MVP: Key architecture
 
