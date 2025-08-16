@@ -25,6 +25,8 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
 
 ## ✨ MVP — What works today
 
+### How to use
+
 1. **Create Oath (Buyer):** Deposit **USDC** + `(seller, expiry)` as an *Oath*. Check seller history via on-chain **attestations**.
 2. **Ship (Seller):** Review Oath, then press **“Shipped”** with a **tracking hash** (shipping deadline enforced).
 3. **Inspect (Buyer):**  
@@ -36,22 +38,17 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
    - **Anyone** may call `settle(id)` to ensure **liveness**
 
 
-## Design choices
+### Design choices
 
 - **Model A (seller-favored):** Disputes affect **reputation**, not funds → removes buyer free-riding incentive  
 - **Transparent events:** `OathCreated / SellerShipped / BuyerApproved / BuyerDisputed / SettledToSeller / RefundedToBuyer / Expired`  
 - **Abuse prevention:** one dispute per order, strict deadlines, attestations required for disputes
 
----
-
 ## 🔭 Why this matters
 
-OathLock is a **commerce primitive**: escrow + reputation that other marketplaces and apps can plug into.  
-It tackles the core frictions of online trade—**delivery, authenticity, finality**—without intermediaries.
+OathLock is a **eCommerce primitive**: escrow + reputation that other marketplaces and apps can plug into. It tackles the core frictions of online trade—**delivery, authenticity, finality**—without intermediaries.
 
 > **In short:** Escrow with reputation → **decentralized trust layer** → the foundation for **future decentralized commerce**.
-
----
 
 ## 🗺️ Roadmap (future primitives)
 
@@ -59,8 +56,6 @@ It tackles the core frictions of online trade—**delivery, authenticity, finali
 - **Incentives & Arbitration:** redistribution from reserves, **ERC‑792 / Kleros** escalation, game-theoretic “**truth wins**” design  
 - **Security & Cross‑chain:** Flow/Zircuit, **Sequencer‑Level Security (SLS)**, **watchers/arbitrators as AVS**  
 - **UX & Automation:** Privy login & wallet, shipping **oracles**, **auto‑settlement**, **ENS/EFP**-aware trust graphs
-
----
 
 ## 🔌 Network (for demo/testing)
 
