@@ -306,11 +306,11 @@ body {
     align-items: center;
     gap: 12px;
     font-size: 13px;
-    background: linear-gradient(135deg, rgba(230, 230, 230, 0.9), rgba(210, 210, 210, 0.7));
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.15), rgba(200, 35, 51, 0.1));
     border-radius: 12px;
     padding: 12px 16px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.15);
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -324,16 +324,16 @@ body {
     top: 0;
     bottom: 0;
     width: 3px;
-    background: linear-gradient(180deg, #666666, #333333);
-    opacity: 0.6;
+    background: linear-gradient(180deg, #dc3545, #c82333);
+    opacity: 0.8;
     transition: opacity 0.3s ease;
 }
 
 .issue-item:hover {
-    background: linear-gradient(135deg, rgba(220, 220, 220, 1), rgba(200, 200, 200, 0.9));
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.25), rgba(200, 35, 51, 0.2));
     transform: translateX(3px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-    border-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.25);
+    border-color: rgba(220, 53, 69, 0.5);
 }
 
 .issue-item:hover::before {
@@ -358,7 +358,7 @@ body {
 
 /* Counterfeit - 警告の三角形 */
 .diamond-icon {
-    background: linear-gradient(135deg, #666666 0%, #333333 100%);
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
 }
 
 .diamond-icon::before {
@@ -383,7 +383,7 @@ body {
 
 /* Damaged - クラッシュ/破損 */
 .damaged-icon {
-    background: linear-gradient(135deg, #555555 0%, #222222 100%);
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
 }
 
 .damaged-icon::before {
@@ -406,7 +406,7 @@ body {
 
 /* Undelivered - 停止/禁止マーク */
 .box-icon {
-    background: linear-gradient(135deg, #777777 0%, #444444 100%);
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
 }
 
 .box-icon::before {
@@ -431,7 +431,7 @@ body {
 
 /* Lock/Undelivered - 鍵とアラート */
 .lock-icon {
-    background: linear-gradient(135deg, #888888 0%, #555555 100%);
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
 }
 
 .lock-icon::before {
@@ -563,7 +563,7 @@ body {
     border-radius: 14px;
 }
 
-/* 逕ｻ蜒上′隱ｭ縺ｿ霎ｼ繧√↑縺��ｴ蜷医�繝励Ξ繝ｼ繧ｹ繝帙Ν繝繝ｼ */
+/*  */
 .product-image::before {
     content: '逃';
     font-size: 32px;
@@ -608,16 +608,22 @@ body {
 }
 
 .status-btn.active {
-    background: linear-gradient(135deg, #333333, #666666);
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
     color: white;
     border-color: transparent;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
 }
 
 .status-btn:not(.active):hover {
-    background: rgba(248, 250, 252, 0.9);
-    border-color: rgba(0, 0, 0, 0.25);
+    background: rgba(254, 226, 226, 0.9);
+    border-color: rgba(220, 38, 38, 0.25);
     transform: translateY(-1px);
+}
+
+.status-btn.active:hover {
+    background: linear-gradient(135deg, #991b1b, #7f1d1d);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
 }
 
 .footer {
@@ -628,7 +634,7 @@ body {
 }
 
 .raise-dispute-btn {
-    background: linear-gradient(135deg, #333333 0%, #666666 100%);
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
     color: white;
     border: none;
     padding: 16px 40px;
@@ -640,7 +646,7 @@ body {
     transition: all 0.3s ease;
     width: 100%;
     max-width: 300px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
@@ -658,8 +664,9 @@ body {
 }
 
 .raise-dispute-btn:hover {
+    background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 12px 28px rgba(153, 27, 27, 0.4);
 }
 
 .raise-dispute-btn:hover::before {
@@ -834,4 +841,5 @@ body {
         padding: 14px 30px;
         font-size: 15px;
     }
-}
+}}
+
