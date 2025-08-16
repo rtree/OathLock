@@ -5,7 +5,7 @@ const OathLockModule = buildModule("OathLockModule", (m) => {
   const network = m.getParameter("network", "localhost") as unknown as string;
 
   let usdcToken;
-
+  
   if (network === "flowMainnet") {
     usdcToken = m.contractAt("IERC20", "0xF1815bd50389c46847f0Bda824eC8da914045D14"); // stgUSDC
   } else if (network === "zircuitMainnet") {
