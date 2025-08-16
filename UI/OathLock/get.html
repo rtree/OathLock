@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oath Lock - Reward Sent Successfully</title>
+    <link rel="stylesheet" href="get.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-header">
+            <img src="img/oathlock-logo.png" alt="OATHLOCK" class="logo">
+            <div class="motto">Trust. Verify. Secure.</div>
+        </div>
+        
+        <div class="confirmation-card">
+            <div class="confirmation-header">
+                <div class="success-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <div class="reward-amount">$260.00</div>
+                <h1>Reward Sent Successfully</h1>
+                <p>Your reward has been successfully transferred. The transaction has been completed and the funds are now available.</p>
+            </div>
+
+            <div class="transaction-details">
+                <h3>Transaction Details</h3>
+                <div class="detail-item">
+                    <span class="label">Amount:</span>
+                    <span class="value">$260.00</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Transaction ID:</span>
+                    <span class="value" id="transactionId">0xc4f2a8b9e3d5f7a1c8e6b4d2f9a7c3e5b8d1f6a9c2e4b7d0f3a6c9e2b5d8f1a4c7</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Date & Time:</span>
+                    <span class="value" id="timestamp">December 16, 2024 at 3:45 PM</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Status:</span>
+                    <span class="value status-completed">Completed</span>
+                </div>
+            </div>
+
+            <div class="confirmation-content">
+                <div class="confirmation-details">
+                    <h3>What This Means</h3>
+                    <ul>
+                        <li>The reward has been successfully credited to your account</li>
+                        <li>The transaction is now permanently recorded on the blockchain</li>
+                        <li>You can view this transaction on the blockchain explorer</li>
+                        <li>A confirmation email has been sent to your registered address</li>
+                    </ul>
+                </div>
+
+                <div class="action-buttons">
+                    <button type="button" class="view-blockchain-btn" onclick="viewOnBlockchain()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="btn-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                        View on Blockchain
+                    </button>
+                    <button type="button" class="download-receipt-btn" onclick="downloadReceipt()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" class="btn-icon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        Download Receipt
+                    </button>
+                </div>
+            </div>
+
+            <div class="close-section">
+                <button type="button" class="close-btn" onclick="closeWindow()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set the current timestamp when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: 'numeric', 
+                minute: '2-digit',
+                hour12: true
+            };
+            document.getElementById('timestamp').textContent = now.toLocaleDateString('en-US', options);
+        });
+
+        // View on blockchain function
+        function viewOnBlockchain() {
+            const txId = document.getElementById('transactionId').textContent;
+            // In a real application, this would open the blockchain explorer
+            alert(`Opening blockchain explorer for transaction: ${txId.substring(0, 20)}...`);
+        }
+
+        // Download receipt function
+        function downloadReceipt() {
+            // In a real application, this would generate and download a PDF receipt
+            alert('Receipt download will begin shortly...');
+        }
+
+        // Close window function
+        function closeWindow() {
+            // Try to close the window/tab
+            if (window.opener) {
+                // If opened from another window, close this window
+                window.close();
+            } else {
+                // If opened directly, try to close or go back
+                try {
+                    window.close();
+                } catch (e) {
+                    // If unable to close, redirect back to the main application
+                    window.location.href = 'ethereum-collection.html';
+                }
+            }
+        }
+    </script>
+</body>
+</html>

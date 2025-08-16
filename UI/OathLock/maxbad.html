@@ -37,7 +37,7 @@
                         </div>
                         <div class="stat complaints-stat">
                             <span class="stat-icon">⚠️</span>
-                            <span class="value">2</span>
+                            <span class="value">1</span>
                             <span class="label">Issues</span>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         </div>
                         <div class="price">$260.00</div>
                         <div class="status-buttons">
-                            <button class="status-btn active">Accept</button>
+                            <button class="status-btn active" onclick="goToGet()">Accept</button>
                         </div>
                     </div>
                 </div>
@@ -108,5 +108,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Navigate to get.html when Accept button is clicked
+        function goToGet() {
+            window.location.href = 'get.html';
+        }
+    </script>
 </body>
 </html>

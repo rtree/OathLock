@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -57,7 +56,7 @@
                         </div>
                         <div class="price">$120.00</div>
                         <div class="status-buttons">
-                            <button class="status-btn active">Deposit</button>
+                            <button class="status-btn active" onclick="goToMaxbad()">Deposit</button>
                         </div>
                     </div>
                 </div>
@@ -101,5 +100,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Navigate to maxbad.html when Deposit button is clicked
+        function goToMaxbad() {
+            window.location.href = 'maxbad.html';
+        }
+    </script>
 </body>
 </html>

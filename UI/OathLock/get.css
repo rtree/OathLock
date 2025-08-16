@@ -1,0 +1,344 @@
+/* Get Reward Page - Black & White Modern Design */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #000000;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.logo-header {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    height: 120px;
+    width: auto;
+    margin-bottom: 10px;
+    filter: none;
+}
+
+.motto {
+    color: #666;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.confirmation-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    animation: slideUp 0.6s ease-out;
+    border: 1px solid #e5e5e5;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.confirmation-header {
+    background: #ffffff;
+    color: #1a1a1a;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: #28a745;
+    border: 2px solid #1e7e34;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.success-icon svg {
+    width: 40px;
+    height: 40px;
+    color: white;
+    stroke-width: 3;
+}
+
+.reward-amount {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #dc3545;
+    text-shadow: 0 2px 10px rgba(220, 53, 69, 0.3);
+}
+
+.confirmation-header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #1a1a1a;
+}
+
+.confirmation-header p {
+    font-size: 16px;
+    line-height: 1.5;
+    opacity: 0.7;
+    max-width: 400px;
+    margin: 0 auto;
+    color: #666;
+}
+
+.transaction-details {
+    padding: 30px;
+    border-bottom: 1px solid #e5e5e5;
+    background: white;
+}
+
+.transaction-details h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.transaction-details h3::before {
+    content: '📄';
+    font-size: 18px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item .label {
+    font-weight: 500;
+    color: #666;
+    font-size: 14px;
+}
+
+.detail-item .value {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 14px;
+    text-align: right;
+    max-width: 250px;
+    word-break: break-all;
+}
+
+.status-completed {
+    background: #dc3545;
+    color: white !important;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.confirmation-content {
+    padding: 30px;
+    background: white;
+}
+
+.confirmation-details h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.confirmation-details h3::before {
+    content: '💡';
+    font-size: 16px;
+}
+
+.confirmation-details ul {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.confirmation-details li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    color: #555;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.confirmation-details li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #dc3545;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.view-blockchain-btn,
+.download-receipt-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid #e5e5e5;
+    background: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.view-blockchain-btn:hover,
+.download-receipt-btn:hover {
+    border-color: #1a1a1a;
+    background: #1a1a1a;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(26, 26, 26, 0.15);
+}
+
+.btn-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.close-section {
+    padding: 30px;
+    background: #f8f8f8;
+    text-align: center;
+}
+
+.close-btn {
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.close-btn:hover {
+    background: linear-gradient(135deg, #c82333 0%, #a71e2a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
+}
+
+.close-btn:active {
+    transform: translateY(0);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .confirmation-header {
+        padding: 30px 20px;
+    }
+    
+    .reward-amount {
+        font-size: 36px;
+    }
+    
+    .confirmation-header h1 {
+        font-size: 24px;
+    }
+    
+    .transaction-details,
+    .confirmation-content {
+        padding: 20px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .detail-item .value {
+        text-align: left;
+        max-width: 100%;
+        font-size: 13px;
+    }
+    
+    .close-section {
+        padding: 20px;
+    }
+    
+    .close-btn {
+        width: 100%;
+        min-width: auto;
+    }
+}
