@@ -75,14 +75,8 @@
 
         // Close window function
         function closeWindow() {
-            // In a real application, you might redirect to a dashboard or home page
-            if (window.history.length > 1) {
-                window.history.back();
-            } else {
-                // If there's no history, you could redirect to a home page
-                alert('Application completed successfully. You can now close this window.');
-                window.close();
-            }
+            // Redirect to renew.html
+            window.location.href = 'renew.html';
         }
     </script>
 </body>
