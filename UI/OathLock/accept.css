@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 30%, #2d2d2d 70%, #000000 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+}
+
+.logo-header {
+    text-align: center;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 20px 40px;
+}
+
+.logo {
+    height: 120px;
+    width: auto;
+    margin-bottom: 15px;
+    filter: brightness(1.2);
+}
+
+.motto {
+    color: #666;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.confirmation-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    text-align: center;
+}
+
+.confirmation-header {
+    margin-bottom: 30px;
+}
+
+.confirmation-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.confirmation-header p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 30px;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+}
+
+.success-icon svg {
+    width: 40px;
+    height: 40px;
+    color: white;
+}
+
+.confirmation-content {
+    margin-bottom: 40px;
+}
+
+.confirmation-content h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #22c55e;
+    margin-bottom: 20px;
+}
+
+.confirmation-details {
+    background: rgba(239, 246, 255, 0.8);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.confirmation-details h3 {
+    color: #1e40af;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.confirmation-details ul {
+    list-style: none;
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.confirmation-details ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+}
+
+.confirmation-details ul li::before {
+    content: '✓';
+    color: #22c55e;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.reference-number {
+    background: rgba(254, 242, 242, 0.8);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.reference-number h3 {
+    color: #dc2626;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.reference-number .ref-code {
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+.close-section {
+    text-align: center;
+}
+
+.close-btn {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.close-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.close-btn:hover {
+    background: linear-gradient(135deg, #991b1b 0%, #7f1d1d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(153, 27, 27, 0.4);
+}
+
+.close-btn:hover::before {
+    left: 100%;
+}
+
+.timeline-info {
+    background: rgba(255, 251, 235, 0.8);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.timeline-info h3 {
+    color: #d97706;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.timeline-info p {
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+    
+    .confirmation-card {
+        padding: 24px;
+    }
+    
+    .confirmation-header h1 {
+        font-size: 22px;
+    }
+    
+    .logo {
+        height: 80px;
+    }
+    
+    .logo-header {
+        padding: 15px 20px;
+    }
+}
