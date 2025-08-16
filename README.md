@@ -6,7 +6,7 @@ A trust-minimized escrow contract for physical-goods commerce on EVM-compatible 
 
 This project runs on:
 
-<img width="133" height="78" alt="image" src="https://github.com/user-attachments/assets/e72b10ea-631a-4a71-a931-83e45d2546db" />Flow 0x0FBF8E4536f40831EE7eC35E2127D8a6580Bdee7
+<img width="161" height="150" alt="image" src="https://github.com/user-attachments/assets/689b0530-3e55-4f5e-bc6d-1c58053468a7" /> Flow 0x0FBF8E4536f40831EE7eC35E2127D8a6580Bdee7
 
 and
 
