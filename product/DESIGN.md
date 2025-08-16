@@ -1,4 +1,3 @@
-
 # Product design
 
 Create an escrow contract on the EVM chain.
@@ -51,32 +50,32 @@ OathLock — "Put the oath on-chain, settle with truth."
   - settle(id) は誰でも実行可。期限超過で自動決着しないバグを回避。
   - （Stretch で）Automation を噛ませれば UX が上がるが、MVP は手動でOK。
 - タイミングの明確化
-  - expiry と別に shipDeadline を導入（= ステップ9の「発送前/後」の判定を明確化）
-  - sellerShip() は block.timestamp <= shipDeadline の時だけ有効。
-  - shipDeadline < expiry をコントラクトで強制。
+  - Introduce shipDeadline separate from expiry (= clarify "before/after shipping" judgment in step 5)
+  - sellerShip() is only valid when block.timestamp <= shipDeadline
+  - Contract enforces shipDeadline < expiry
 
 ## Stretch Goals
 
 - Goals
-  - CDP by coinbase
-  - Sequencer Level Security の“悪意Tx隔離”を前面に：エスクローのapproveやsettleをSLSの保護配下で実行＝ユーザー保護を訴求。Zircuitへのデプロイ＆検証が賞の要件そのもの。
-  - Privy ulitization
+  - CDP by Coinbase
+  - Emphasize Sequencer Level Security's "malicious transaction isolation": Execute escrow approve and settle under SLS protection = promote user protection. Deployment & verification on Zircuit is the prize requirement itself.
+  - Privy utilization
     - UX improvement for users, with e-mail login, wallet creation and onramp
   - Oracles utilization
     - Product arrival/shipment info from delivery providers
   - Community driven settlement
     - ERC-792
-  - Introduce constraints on sellers, using accumulated Attestations to
-    - 売り手から利用料をもらい、悪評が溜まってきた売り手に悪評をつけた購入者には後で売上や利用料の一部を還元する
-      - 還元する元資金はこのように確保する
-        - ローリング準備金（Rolling Reserve）
-          - **販売者アカウントに“継続的な保留金”**を持たせる
-          - 各販売者に売上の x% を期間Tだけ保留（例：10–20%を14–30日）
-          - 保留金は“同期間の取引群の損害（返金）”に自動充当
-          - 紛争率が上がるほど「保留率x」「保留期間T」「新規注文の上限額」を自動引き上げ
-          - 悪評で新規が止まる＝長期の損になる（= 新アカウントを作り直すコストも考慮）
-    - 新規販売者の“初期上限”を設ける。Registry に maxOutstanding（同時オープン可能な Oath 総額）を持たせ、初期は小さく
-      - 悪評が増えると 上限さらに縮小（ゼロまで）
-      - 逃げても大きく稼げない
-  - 「嘘をつくと（評判＋保管料などで）損」「事実なら即時/低コストで勝てる」という、クリプトらしい自己実現的ゲーム設計
+  - Introduce constraints on sellers, using accumulated Attestations to:
+    - Collect usage fees from sellers, and later redistribute part of sales or usage fees to buyers who left negative reviews for sellers with accumulated bad reputation
+      - Secure funding for redistribution as follows:
+        - Rolling Reserve
+          - **Maintain "continuous reserve funds" in seller accounts**
+          - Hold x% of each seller's sales for period T (e.g., 10-20% for 14-30 days)
+          - Reserve funds automatically cover "damages (refunds) from transaction groups in the same period"
+          - As dispute rate increases, automatically raise "reserve rate x", "reserve period T", and "maximum amount for new orders"
+          - Bad reputation stops new orders = long-term loss (= also consider cost of creating new accounts)
+    - Set "initial limits" for new sellers. Have Registry maintain maxOutstanding (total Oath amount that can be open simultaneously), starting small
+      - As bad reputation increases, limits shrink further (down to zero)
+      - Can't earn big even if they run away
+  - Crypto-native self-fulfilling game design where "lying causes loss (reputation + storage fees etc.)" and "truth wins immediately/at low cost"
 
