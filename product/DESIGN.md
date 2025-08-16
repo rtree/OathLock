@@ -1,50 +1,50 @@
 
 # Product design
 
-EVM のチェーン上に供託所コントラクトを作る。
-OathLock — “Put the oath on-chain, settle with truth.”
+Create an escrow contract on the EVM chain.
+OathLock — "Put the oath on-chain, settle with truth."
 
 ## MVP
 
 ### MVP: How to use
 
-  １．購入者は OathLock に接続し、Oath（販売者アドレス + 供託の有効期限 + USDC）を預ける。
-      預ける前に販売者の過去の Attestationを閲覧でき、取引続行可否を判断できる。
+  1. The buyer connects to OathLock and deposits an Oath (seller address + escrow expiration date + USDC).
+      Before depositing, they can view the seller's past Attestations and decide whether to proceed with the transaction.
 
-  ２．販売者は OathLock に接続し、問題なければ商品を発送して**「発送しました」**を押す。押す前に
-        ・Oath の内容
-        ・購入者の OathLock 関連 Attestation
-      を確認できる。問題があれば発送せず取引終了（期限後に購入者へ返金）。
+  2. The seller connects to OathLock, and if there are no issues, ships the product and presses **"Shipped"**. Before pressing, they can verify:
+        - Oath contents
+        - Buyer's OathLock-related Attestations
+      If there are issues, they don't ship and end the transaction (refund to buyer after expiration).
 
-  ３．購入者は商品到着後に検品し、問題なければ**「商品検品に問題なし」を押す。
-      すると有効期限前でも**販売者へ USDC 送付。
+  3. After the buyer receives the product and inspects it, if there are no problems, they press **"Product inspection passed"**.
+      This triggers **USDC transfer to the seller even before the expiration date**.
 
-  ４．購入者が**「未着／偽物」を証拠 URL 付き**で申告した場合、取引は失敗として扱い
-      USDC は販売者に送付（※評判のみが変動）。同時に Attestation に記録が残る：
+  4. If the buyer reports **"Not delivered/Counterfeit" with evidence URL**, the transaction is treated as failed and
+      USDC is sent to the seller (※only reputation changes). Simultaneously, a record is left in the Attestation:
 
-        ・購入者側：未着／偽物により購入キャンセル
-        ・販売者側：紛争により取引終了
+        - Buyer side: Purchase canceled due to non-delivery/counterfeit
+        - Seller side: Transaction ended due to dispute
 
-  ５．有効期限切れ時
+  5. When expiration date is reached:
 
-        ・発送前：購入者に全額返金
-        ・発送後：販売者に全額送金
+        - Before shipping: Full refund to buyer
+        - After shipping: Full payment to seller
 
 ### MVP: Key architecture
 
-  ・販売者が悪意：未着・偽物疑義が増えるとAttestation 上の評判悪化→ OathLock で相手にされなくなる。
+- Malicious seller: As non-delivery/counterfeit disputes increase, reputation deteriorates on Attestation → becomes untrustworthy on OathLock.
 
-  ・購入者が悪意：申告してもUSDC は戻らないため、タダ取り動機がない。
+- Malicious buyer: Even if they report issues, USDC doesn't return to them, so there's no incentive for free-riding.
 
-  　⇒「モデルA: 販売者優位」を採用した
-        モデルA（0%）　　　　　：紛争時、購入者は返金ゼロ。悪評のみ残せる。
-        モデルB（100%）　　　　：紛争時、購入者は全額返金。ただし購入者の詐欺動機が強まる。購入者優位。
-        モデルC（0 < x < 100）：　モデルA と モデルBの中間。リスクと悪意の期待値が変動するが万人が納得する基準はない。
+　⇒ Adopted "Model A: Seller-favored"
+        Model A (0%): In disputes, buyer gets zero refund. Only bad reputation can be left.
+        Model B (100%): In disputes, buyer gets full refund. However, this strengthens buyer's fraud incentive. Buyer-favored.
+        Model C (0 < x < 100): Middle ground between Model A and Model B. Expected values of risk and malice vary, but there's no universally acceptable standard.
 
 ## Stretch Goals
 
 - Goals
-  - 積み上げたAttestationを使い「売り手に制約を導入する」
+  - Use accumulated Attestations to "introduce constraints on sellers"
 
   
 
