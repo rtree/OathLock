@@ -17,7 +17,7 @@ tmux send-keys -t "$SESSION":0.0 "cd $PROJECT_DIR/product/frontend && npm instal
 tmux send-keys -t "$SESSION":0.2 "cd $PROJECT_DIR" C-m
 
 # Bottom-right: git pull loop
-tmux send-keys -t "$SESSION":0.3 "while true; cd $PROJECT_DIR && do git pull -v && cd $PROJECT_DIR/product/frontend && npm install; sleep 3; done" C-m
+tmux send-keys -t "$SESSION":0.3 "while true; do cd $PROJECT_DIR && git pull -v && cd $PROJECT_DIR/product/frontend && npm install; sleep 3; done" C-m
 
 # セッションを表示
 tmux attach-session -t "$SESSION"
