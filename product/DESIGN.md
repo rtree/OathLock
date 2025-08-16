@@ -77,4 +77,11 @@ OathLock — "Put the oath on-chain, settle with truth."
       - As bad reputation increases, limits shrink further (down to zero)
       - Can't earn big even if they run away
   - Crypto-native self-fulfilling game design where "lying causes loss (reputation + storage fees etc.)" and "truth wins immediately/at low cost"
-
+  - Cross chain -> Deposit to Flow, but send USDC to other chain
+  - “Watchers/Arbitrators as AVS”（証拠検証やチャレンジを担う再ステーク型AVS**） like Eigenlayer
+  - EFP（Ethereum Follow Protocol）やENSを使い、フォロー/信頼グラフでボンド係数を動的調整（信用が高い買い手は低ボンド）。デモでEAS×EFPの可視化パネルを見せると通ります。
+  - Automation対応（checkUpkeep/performUpkeep or time-based trigger）
+  - - Automationで期限越え即settle()（OKなら売り手へ／NG＋裁定なら返金）。
+    - 買い手がNG → EASに“未着”アテステーション発行 → Klerosに送付。
+    - すべてのTxはProtect/MEV-Blocker経由で安全にブロードキャスト。
+    - - docs.kleros.io
