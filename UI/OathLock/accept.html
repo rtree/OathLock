@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oath Lock - Application Received</title>
+    <link rel="stylesheet" href="accept.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo-header">
+            <img src="img/oathlock-logo.png" alt="OATHLOCK" class="logo">
+            <div class="motto">Trust. Verify. Secure.</div>
+        </div>
+        
+        <div class="confirmation-card">
+            <div class="confirmation-header">
+                <div class="success-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h1>Application Received</h1>
+                <p>Thank you for submitting your dispute evidence. Your application has been successfully received and is now under review.</p>
+            </div>
+
+            <div class="reference-number">
+                <h3>Reference Number</h3>
+                <div class="ref-code" id="referenceCode">OL-2025-001234</div>
+            </div>
+
+            <div class="confirmation-content">
+                <div class="confirmation-details">
+                    <h3>What Happens Next</h3>
+                    <ul>
+                        <li>Our team will review your submitted evidence within 24-48 hours</li>
+                        <li>We will contact you if additional information is required</li>
+                        <li>You will receive email updates at each stage of the review process</li>
+                        <li>Final resolution typically takes 3-5 business days</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-info">
+                    <h3>Important Information</h3>
+                    <p>Please keep your reference number safe as you will need it for any future correspondence regarding this dispute. You can check the status of your application by contacting our support team with this reference number.</p>
+                </div>
+            </div>
+
+            <div class="close-section">
+                <button type="button" class="close-btn" onclick="closeWindow()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate a unique reference number
+        function generateReferenceNumber() {
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const random = Math.floor(Math.random() * 999999).toString().padStart(6, '0');
+            
+            return `OL-${year}${month}${day}-${random}`;
+        }
+
+        // Set the reference number when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const refCode = generateReferenceNumber();
+            document.getElementById('referenceCode').textContent = refCode;
+        });
+
+        // Close window function
+        function closeWindow() {
+            // In a real application, you might redirect to a dashboard or home page
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                // If there's no history, you could redirect to a home page
+                alert('Application completed successfully. You can now close this window.');
+                window.close();
+            }
+        }
+    </script>
+</body>
+</html>
