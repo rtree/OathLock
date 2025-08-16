@@ -1,3 +1,5 @@
+ngrok.yaml*
+
 .env*
 # Logs
 logs
