@@ -53,6 +53,9 @@ OathLock is a **eCommerce primitive**: escrow + reputation that other marketplac
 
 [Look at our survey](https://github.com/rtree/OathLock/blob/main/presentation/Zircuit%20presentation.pdf). Web2 players are almost prone to this problem, as they are intermidiaries with no whole picture of what's going on as payment and settlment are not in hands of them and no information of neighbors.
 
+<img width="897" height="449" alt="image" src="https://github.com/user-attachments/assets/59f9703d-3094-4058-a00e-685853ea3663" />
+
+Let's draw eCommerce from Web2 to Web3, where all transactions are accmulating for reputations and tacle with this issue!
 
 ## 🗺️ Roadmap (future primitives)
 
