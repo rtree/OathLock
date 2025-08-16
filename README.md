@@ -2,9 +2,7 @@
 
 > *Put the oath on-chain, settle with truth.*
 
-OathLock — Escrow for Decentralized Commerce (EVM) is a trust-minimized escrow contract for physical-goods commerce on EVM-compatible chains.
-
-OathLock aligns incentives with a **seller-favored, fraud-resistant design**, while keeping **all transaction events and disputes transparent on-chain** via attestations.
+OathLock — Escrow for Decentralized Commerce (EVM) is a trust-minimized escrow contract for physical-goods commerce on EVM-compatible chains. OathLock aligns incentives with a **seller-favored, fraud-resistant design**, while keeping **all transaction events and disputes transparent on-chain** via attestations.
 
 
 ## Deployed to ...
