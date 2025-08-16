@@ -7,8 +7,8 @@ A trust-minimized escrow contract for physical-goods commerce on EVM-compatible 
 
 ## This project runs on ...
 
-### Flow
-<img width="161" height="150" alt="image" src="https://github.com/user-attachments/assets/689b0530-3e55-4f5e-bc6d-1c58053468a7" />
+### Flow EVM
+<img width="165" height="62" alt="image" src="https://github.com/user-attachments/assets/07105451-c5d8-4641-997b-c00cc3aca5b6" />
 
 [Link to contract address](https://github.com/rtree/OathLock/blob/main/product/contract/ignition/deployments/chain-48900/deployed_addresses.json)
 
