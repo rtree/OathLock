@@ -9,11 +9,13 @@ OathLock — "Put the oath on-chain, settle with truth."
 
 https://oathlock.ngrok.io
 
-### XXX
-
-xxx
+### Specific for ETHGlobal NYC
 
 ## For sponsers
+
+### Flow
+
+
 
 ### Nora
 
