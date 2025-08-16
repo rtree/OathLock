@@ -34,25 +34,24 @@ OathLock — "Put the oath on-chain, settle with truth."
 
 ### MVP: Detailed
 
-- 「発送しました」には“発送前提条件”を付ける
-  - sellerShip() 呼出しには 発送期限（shipDeadline < expiry） を必須化
-  - 押した瞬間に trackingHash（追跡番号のハッシュ） を保存（空は不可）
-- 未着/偽物”申告の濫用対策（購入者側）
-  - 一取引1回のみ、かつ期限前のみ申告可（期限後の駆け込みは無効）
-  - 申告は EAS へのアテステ必須（URL はここに格納、資金分岐には影響しない）
-    - スパム申告でも資金は動かない、評判だけが動く。
-- イベントの透明性
-  - 誰でもダッシュボードで確認可能に
-    - “炎上”がコスト化される（売り手は続けにくく、買い手は安易に押しにくい）
-    - OathCreated / SellerShipped / BuyerApproved / BuyerDisputed / SettledToSeller / RefundedToBuyer / Expired
-を発行
-- liveness 確保
-  - settle(id) は誰でも実行可。期限超過で自動決着しないバグを回避。
-  - （Stretch で）Automation を噛ませれば UX が上がるが、MVP は手動でOK。
-- タイミングの明確化
-  - Introduce shipDeadline separate from expiry (= clarify "before/after shipping" judgment in step 5)
+- Add shipping preconditions to the "Shipped" action
+  - Make a shipping deadline mandatory for sellerShip() calls (shipDeadline < expiry)
+  - When the button is pressed, save trackingHash (hash of the tracking number). Empty is not allowed.
+- Abuse prevention for "Not Received / Counterfeit" claims (buyer side)
+  - Only one claim per transaction, and only before the deadline (last-minute filings after the deadline are invalid)
+  - A claim must be attested to EAS (store the URL here; it does not affect fund routing)
+    - Even if the claim is spam, funds do not move—only reputation changes.
+- Event transparency
+  - Make everything viewable by anyone via a dashboard
+    - Public flare-ups become costly (harder for sellers to keep operating; buyers are less likely to file casually)
+    - Emit: OathCreated / SellerShipped / BuyerApproved / BuyerDisputed / SettledToSeller / RefundedToBuyer / Expired
+- Ensure liveness
+  - settle(id) can be executed by anyone, avoiding a bug where auto-settlement fails after the deadline
+  - (As a stretch) wiring in Automation improves UX, but manual is fine for the MVP
+- Clarify timing
+  - Introduce shipDeadline separate from expiry (= clarifies the "before/after shipping" judgment in step 5)
   - sellerShip() is only valid when block.timestamp <= shipDeadline
-  - Contract enforces shipDeadline < expiry
+  - The contract enforces shipDeadline < expiry
 
 ## Stretch Goals
 
