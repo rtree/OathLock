@@ -90,15 +90,12 @@ It tackles the core frictions of online trade—**delivery, authenticity, finali
 - **RPC:** https://mainnet.zircuit.com  
 - **Chain ID:** 48900  
 - **Currency:** ETH  
-  - ZRC: `0xfd418e42783382e86ae91e445406600ba144d162` / `0xfd418e42783382E86Ae91e445406600Ba144D162`  
+  - **ZRC:** `0xfd418e42783382e86ae91e445406600ba144d162` / `0xfd418e42783382E86Ae91e445406600Ba144D162`  
 - **Explorer:** https://explorer.zircuit.com  
 - **USDC.e:** `0x3b952c8C9C44e8Fe201e2b26F6B2200203214cfF`  
 - **Bridge/DEX:** https://bridge.zircuit.com/ , https://app.circuit.money/swap  
 - **EAS:** Explorer / SchemaRegistry / EAS.sol: **TBD**
+
 </details>
 
 ---
-
-## 🤝 Credits / Notes
-- Tagline: *“You shall put the oath on-chain, settled with truth.”*  
-- Built for ETHGlobal NYC demo.
