@@ -107,6 +107,7 @@ contract OathLock {
         require(msg.sender == oath.buyer, "Only buyer can dispute");
         require(oath.status == Status.Shipped, "Oath not in shipped state");
         require(bytes(evidenceURL).length > 0, "Evidence URL cannot be empty");
+        require(bytes(oath.evidenceURL).length == 0, "Dispute already filed");
 
         oath.status = Status.Disputed;
         oath.evidenceURL = evidenceURL;
