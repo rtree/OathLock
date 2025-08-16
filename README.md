@@ -22,6 +22,7 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
 
 - **E-commerce demo:** <https://oathlock.ngrok.io/ui/ethereum-collection.html>
 - **App URL:** <https://oathlock.ngrok.io>
+- Powerpoint: <https://github.com/rtree/OathLock/blob/main/presentation/Zircuit%20presentation.pdf>
 
 ## ✨ MVP — What works today
 
@@ -49,6 +50,9 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
 OathLock is a **eCommerce primitive**: escrow + reputation that other marketplaces and apps can plug into. It tackles the core frictions of online trade—**delivery, authenticity, finality**—without intermediaries.
 
 > **In short:** Escrow with reputation → **decentralized trust layer** → the foundation for **future decentralized commerce**.
+
+[Look at our survey](https://github.com/rtree/OathLock/blob/main/presentation/Zircuit%20presentation.pdf). Web2 players are almost prone to this problem, as they are intermidiaries with no whole picture of what's going on as payment and settlment are not in hands of them and no information of neighbors.
+
 
 ## 🗺️ Roadmap (future primitives)
 
