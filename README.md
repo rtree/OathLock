@@ -7,12 +7,14 @@ A trust-minimized escrow contract for physical-goods commerce on EVM-compatible 
 ---
 
 ## 🌐 Demo
+
 - **E-commerce demo:** <https://oathlock.ngrok.io/ui/ethereum-collection.html>
 - **App URL:** <https://oathlock.ngrok.io>
 
 ---
 
 ## ✨ MVP — What works today
+
 1. **Create Oath (Buyer):** Deposit **USDC** + `(seller, expiry)` as an *Oath*. Check seller history via on-chain **attestations**.
 2. **Ship (Seller):** Review Oath, then press **“Shipped”** with a **tracking hash** (shipping deadline enforced).
 3. **Inspect (Buyer):**  
@@ -23,7 +25,9 @@ A trust-minimized escrow contract for physical-goods commerce on EVM-compatible 
    - **Shipped** → full payment to seller  
    - **Anyone** may call `settle(id)` to ensure **liveness**
 
-**Design choices**
+
+## Design choices
+
 - **Model A (seller-favored):** Disputes affect **reputation**, not funds → removes buyer free-riding incentive  
 - **Transparent events:** `OathCreated / SellerShipped / BuyerApproved / BuyerDisputed / SettledToSeller / RefundedToBuyer / Expired`  
 - **Abuse prevention:** one dispute per order, strict deadlines, attestations required for disputes
@@ -31,6 +35,7 @@ A trust-minimized escrow contract for physical-goods commerce on EVM-compatible 
 ---
 
 ## 🔭 Why this matters
+
 OathLock is a **commerce primitive**: escrow + reputation that other marketplaces and apps can plug into.  
 It tackles the core frictions of online trade—**delivery, authenticity, finality**—without intermediaries.
 
@@ -39,6 +44,7 @@ It tackles the core frictions of online trade—**delivery, authenticity, finali
 ---
 
 ## 🗺️ Roadmap (future primitives)
+
 - **Reputation & Risk:** richer attestation history, **AI trust scoring**, **rolling reserves**, seller **max outstanding** limits  
 - **Incentives & Arbitration:** redistribution from reserves, **ERC‑792 / Kleros** escalation, game-theoretic “**truth wins**” design  
 - **Security & Cross‑chain:** Flow/Zircuit, **Sequencer‑Level Security (SLS)**, **watchers/arbitrators as AVS**  
@@ -47,6 +53,7 @@ It tackles the core frictions of online trade—**delivery, authenticity, finali
 ---
 
 ## 🔌 Network (for demo/testing)
+
 <details>
 <summary><strong>Flow EVM Mainnet</strong></summary>
 
