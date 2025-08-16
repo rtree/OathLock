@@ -189,8 +189,8 @@
                 formData.append('comments', comments);
                 formData.append('disputeTypes', selectedDisputeTypes.join(','));
 
-                // Here you would normally send the data to your server
-                alert(`Application submitted successfully!\nDispute Types: ${selectedDisputeTypes.join(', ')}\nYour dispute will be reviewed.`);
+                // Redirect to accept.html
+                window.location.href = 'accept.html';
             });
 
             // Listen for comment changes

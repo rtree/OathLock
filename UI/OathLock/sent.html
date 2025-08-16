@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -97,4 +96,15 @@
         </div>
     </div>
 </body>
+<script>
+    // Sent button click handler
+    document.addEventListener('DOMContentLoaded', function() {
+        const sentBtn = document.querySelector('.status-btn.active');
+        if (sentBtn && sentBtn.textContent === 'Sent') {
+            sentBtn.addEventListener('click', function() {
+                window.location.href = 'index.html';
+            });
+        }
+    });
+</script>
 </html>
