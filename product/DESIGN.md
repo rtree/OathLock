@@ -38,7 +38,13 @@ OathLock — "Put the oath on-chain, settle with truth."
 ## Stretch Goals
 
 - Goals
-  - Use accumulated Attestations to "introduce constraints on sellers"
+  - Privy ulitization
+    - UX improvement for users, with e-mail login, wallet creation and onramp
+  - Oracles utilization
+    - Product arrival/shipment info from delivery providers
+  - Community driven settlement
+    - ERC-792
+  - Introduce constraints on sellers, using accumulated Attestations to
     - 売り手から利用料をもらい、悪評が溜まってきた売り手に悪評をつけた購入者には後で売上や利用料の一部を還元する
       - 還元する元資金はこのように確保する
         - ローリング準備金（Rolling Reserve）
