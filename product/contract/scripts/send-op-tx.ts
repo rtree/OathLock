@@ -7,7 +7,7 @@ const { viem } = await network.connect({
 
 console.log("Sending transaction using the OP chain type");
 
-const publicClient = await viem.getPublicClient();
+const publicClient   = await viem.getPublicClient();
 const [senderClient] = await viem.getWalletClients();
 
 console.log("Sending 1 wei from", senderClient.account.address, "to itself");
