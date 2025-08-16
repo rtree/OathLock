@@ -48,7 +48,7 @@ describe("OathLock", function () {
       
       // ネットワークに応じてUSDCトークンを設定
       if (network.name === "flowMainnet") {
-        // 本物のstgUSDCを使用
+        // Flow Mainnet: 本物のstgUSDCを使用
         const stgUSDCAddress = "0xF1815bd50389c46847f0Bda824eC8da914045D14";
         mockUSDC = await ethers.getContractAt("IERC20", stgUSDCAddress) as any;
         console.log(`Using real stgUSDC at: ${stgUSDCAddress}`);
@@ -61,8 +61,22 @@ describe("OathLock", function () {
           throw new Error(`Alice needs at least ${ethers.formatUnits(AMOUNT, 6)} stgUSDC for this test`);
         }
         
+      } else if (network.name === "zircuitMainnet") {
+        // Zircuit Mainnet: 本物のUSDC.eを使用
+        const usdcAddress = "0x3b952c8C9C44e8Fe201e2b26F6B2200203214cfF";
+        mockUSDC = await ethers.getContractAt("IERC20", usdcAddress) as any;
+        console.log(`Using real USDC.e at: ${usdcAddress}`);
+        
+        // 本物のUSDCの場合、既存残高をチェック
+        const aliceBalance = await mockUSDC.balanceOf(alice.address);
+        console.log(`Alice USDC.e balance: ${ethers.formatUnits(aliceBalance, 6)} USDC.e`);
+        
+        if (aliceBalance < AMOUNT) {
+          throw new Error(`Alice needs at least ${ethers.formatUnits(AMOUNT, 6)} USDC.e for this test`);
+        }
+        
       } else if (network.name === "flowTestnet") {
-        // MockUSDCを使用
+        // Flow Testnet: MockUSDCを使用
         const mockUSDCAddress = deployedAddresses["OathLockModule#MockUSDC"];
         mockUSDC = await ethers.getContractAt("MockUSDC", mockUSDCAddress);
         console.log(`Using MockUSDC at: ${mockUSDCAddress}`);
@@ -72,6 +86,22 @@ describe("OathLock", function () {
         if (aliceBalance < ethers.parseUnits("1", 6)) {
           await mockUSDC.connect(alice).mint(alice.address, ethers.parseUnits("1", 6));
           console.log("Minted USDC to Alice");
+        }
+      } else {
+        // その他のテストネット: MockUSDCを使用
+        const mockUSDCAddress = deployedAddresses["OathLockModule#MockUSDC"];
+        if (mockUSDCAddress) {
+          mockUSDC = await ethers.getContractAt("MockUSDC", mockUSDCAddress);
+          console.log(`Using MockUSDC at: ${mockUSDCAddress}`);
+          
+          // MockUSDCの場合、必要に応じてmint
+          const aliceBalance = await mockUSDC.balanceOf(alice.address);
+          if (aliceBalance < ethers.parseUnits("1", 6)) {
+            await mockUSDC.connect(alice).mint(alice.address, ethers.parseUnits("1", 6));
+            console.log("Minted USDC to Alice");
+          }
+        } else {
+          throw new Error("MockUSDC not found in deployment");
         }
       }
       
@@ -188,7 +218,18 @@ describe("OathLock", function () {
     console.log(`Bob (seller): ${bob.address}`);
     console.log(`Final Bob balance: ${ethers.formatUnits(bobFinalBalance, 6)} USDC`);
     console.log(`OathLock contract: ${await oathLock.getAddress()}`);
-    console.log(`MockUSDC contract: ${await mockUSDC.getAddress()}`);
+    
+    // ネットワークに応じてトークン名を表示
+    let tokenName = "USDC";
+    if (network.name === "flowMainnet") {
+      tokenName = "stgUSDC";
+    } else if (network.name === "zircuitMainnet") {
+      tokenName = "USDC.e";
+    } else if (network.name === "flowTestnet") {
+      tokenName = "MockUSDC";
+    }
+    
+    console.log(`Token contract: ${await mockUSDC.getAddress()} (${tokenName})`);
     console.log("✓ All steps completed successfully!");
   });
 });
