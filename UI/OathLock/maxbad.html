@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Oath Lock - Transaction Dispute</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Override for maxbad.html - hide placeholder text */
+        .product-image::before {
+            display: none !important;
+        }
+        .placeholder-text {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-header">
+            <img src="img/oathlock-logo.png" alt="OATHLOCK" class="logo">
+            <div class="motto">Trust. Verify. Secure.</div>
+        </div>
+        <div class="dispute-card">
+            <div class="header">
+                <div class="participant buyer">
+                    <h3>BUYER</h3>
+                    <div class="avatar">
+                        <div class="profile-icon female"></div>
+                    </div>
+                    <h4>A. Jones</h4>
+                    <div class="stats">
+                        <div class="stat transactions-stat">
+                            <span class="stat-icon">📊</span>
+                            <span class="value">60</span>
+                            <span class="label">Trades</span>
+                        </div>
+                        <div class="stat complaints-stat">
+                            <span class="stat-icon">⚠️</span>
+                            <span class="value">2</span>
+                            <span class="label">Issues</span>
+                        </div>
+                    </div>
+                    <div class="issues">
+                        <div class="issue-item commitment-item">
+                            <div class="crown-icon"></div>
+                            <span class="issue-label">Commitment</span>
+                            <span class="issue-count">1</span>
+                        </div>
+                        <div class="issue-item">
+                            <div class="lock-icon"></div>
+                            <span class="issue-label">Undelivered</span>
+                            <span class="issue-count">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="transaction-center">
+                    <div class="transaction-info">
+                        <h3>REWARD</h3>
+                        <div class="product-image">
+                            <img src="img/reward.png" alt="Ethereum Reward" class="product-img" 
+                                 onerror="this.style.display='none'; this.parentNode.classList.add('no-image');">
+                        </div>
+                        <div class="price">$260.00</div>
+                        <div class="status-buttons">
+                            <button class="status-btn active">Accept</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="participant seller">
+                    <h3>SELLER</h3>
+                    <div class="avatar">
+                        <div class="profile-icon"></div>
+                    </div>
+                    <h4>B. Carter</h4>
+                    <div class="stats">
+                        <div class="stat transactions-stat">
+                            <span class="stat-icon">📊</span>
+                            <span class="value">320</span>
+                            <span class="label">Trades</span>
+                        </div>
+                        <div class="stat complaints-stat">
+                            <span class="stat-icon">⚠️</span>
+                            <span class="value">13</span>
+                            <span class="label">Issues</span>
+                        </div>
+                    </div>
+                    <div class="issues">
+                        <div class="issue-item">
+                            <div class="diamond-icon"></div>
+                            <span class="issue-label">Counterfeit</span>
+                            <span class="issue-count">4</span>
+                        </div>
+                        <div class="issue-item">
+                            <div class="damaged-icon"></div>
+                            <span class="issue-label">Damaged</span>
+                            <span class="issue-count">5</span>
+                        </div>
+                        <div class="issue-item">
+                            <div class="box-icon"></div>
+                            <span class="issue-label">Undelivered</span>
+                            <span class="issue-count">4</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

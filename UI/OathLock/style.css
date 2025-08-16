@@ -429,6 +429,21 @@ body {
     border: 1px solid white;
 }
 
+/* Crown/Commitment - 王冠 */
+.crown-icon {
+    background: transparent;
+}
+
+.crown-icon::before {
+    content: '👑';
+    font-size: 20px;
+    filter: none;
+}
+
+.crown-icon::after {
+    display: none;
+}
+
 /* Lock/Undelivered - 鍵とアラート */
 .lock-icon {
     background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
@@ -732,6 +747,21 @@ body {
     font-style: italic;
 }
 
+/* Commitment specific styles - yellow background */
+.commitment-stat {
+    background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%) !important;
+}
+
+.commitment-item {
+    background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%) !important;
+}
+
+.commitment-item .issue-count {
+    background: rgba(255, 215, 0, 0.9) !important;
+    color: #333 !important;
+    box-shadow: 0 2px 4px rgba(255, 215, 0, 0.3) !important;
+}
+
 @media (max-width: 768px) {
     body {
         padding: 10px;
@@ -841,5 +871,5 @@ body {
         padding: 14px 30px;
         font-size: 15px;
     }
-}}
+}
 
