@@ -45,6 +45,17 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
 - **Transparent events:** `OathCreated / SellerShipped / BuyerApproved / BuyerDisputed / SettledToSeller / RefundedToBuyer / Expired`  
 - **Abuse prevention:** one dispute per order, strict deadlines, attestations required for disputes
 
+- **Incentive alignment:** Our design creates balanced incentives for both parties:
+  - **Buyer risk/reward:** Bears financial risk but can damage seller reputation through disputes
+  - **Seller risk/reward:** Cannot counter-dispute buyers but always receives payment (if shipped on time)
+  - **Dispute mechanics:** Buyer disputes are automatically accepted, but buyers receive no refunds
+  - **Seller protection:** Cannot defend against disputes, but receives full payment unless shipping deadlines are missed
+
+**Result:** This creates a virtuous cycle where both parties act with genuine intent:
+
+- **Buyers** act purely from community goodwill—they either receive their product peacefully or gain honor by exposing bad sellers to protect future buyers. Refund abusers are eliminated since refunds are impossible.
+- **Sellers** act with integrity because this marketplace is valuable to their business—while one-time scams are possible, repeat fraud isn't viable. Honest sellers face no risk of buyer theft, while scammers accumulate bad reputation and are driven away from OathLock.
+
 ## 🔭 Why this matters
 
 OathLock is a **eCommerce primitive**: escrow + reputation that other marketplaces and apps can plug into. It tackles the core frictions of online trade—**delivery, authenticity, finality**—without intermediaries.
