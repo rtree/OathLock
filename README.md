@@ -1,4 +1,4 @@
-# OathLock — Escrow for Decentralized Commerce (EVM)
+# OathLock — Escrow Contract for Decentralized Commerce
 
 > *Put the oath on-chain, settle with truth.*
 
