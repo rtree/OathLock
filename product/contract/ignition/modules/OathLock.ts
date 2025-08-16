@@ -10,8 +10,7 @@ const OathLockModule = buildModule("OathLockModule", (m) => {
   const usdcToken = m.contract("MockUSDC", []);
   const oathLock  = m.contract("OathLock", [usdcToken]);
 
-
   return { oathLock };
 });
 
-export default OathLockModule;
+export default OathLockModule;  
