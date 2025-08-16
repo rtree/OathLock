@@ -33,6 +33,28 @@ OathLock — "Put the oath on-chain, settle with truth."
   - Model B (100%): In disputes, buyer gets full refund. However, this strengthens buyer's fraud incentive. Buyer-favored.
   - Model C (0 < x < 100): Middle ground between Model A and Model B. Expected values of risk and malice vary, but there's no universally acceptable standard.
 
+### MVP: Detailed
+
+- 「発送しました」には“発送前提条件”を付ける
+  - sellerShip() 呼出しには 発送期限（shipDeadline < expiry） を必須化
+  - 押した瞬間に trackingHash（追跡番号のハッシュ） を保存（空は不可）
+- 未着/偽物”申告の濫用対策（購入者側）
+  - 一取引1回のみ、かつ期限前のみ申告可（期限後の駆け込みは無効）
+  - 申告は EAS へのアテステ必須（URL はここに格納、資金分岐には影響しない）
+    - スパム申告でも資金は動かない、評判だけが動く。
+- イベントの透明性
+  - 誰でもダッシュボードで確認可能に
+    - “炎上”がコスト化される（売り手は続けにくく、買い手は安易に押しにくい）
+    - OathCreated / SellerShipped / BuyerApproved / BuyerDisputed / SettledToSeller / RefundedToBuyer / Expired
+を発行
+- liveness 確保
+  - settle(id) は誰でも実行可。期限超過で自動決着しないバグを回避。
+  - （Stretch で）Automation を噛ませれば UX が上がるが、MVP は手動でOK。
+- タイミングの明確化
+  - expiry と別に shipDeadline を導入（= ステップ9の「発送前/後」の判定を明確化）
+  - sellerShip() は block.timestamp <= shipDeadline の時だけ有効。
+  - shipDeadline < expiry をコントラクトで強制。
+
 ## Stretch Goals
 
 - Goals
@@ -54,4 +76,5 @@ OathLock — "Put the oath on-chain, settle with truth."
     - 新規販売者の“初期上限”を設ける。Registry に maxOutstanding（同時オープン可能な Oath 総額）を持たせ、初期は小さく
       - 悪評が増えると 上限さらに縮小（ゼロまで）
       - 逃げても大きく稼げない
+  - 「嘘をつくと（評判＋保管料などで）損」「事実なら即時/低コストで勝てる」という、クリプトらしい自己実現的ゲーム設計
 
