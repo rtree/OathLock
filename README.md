@@ -5,7 +5,7 @@
 OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow contract for eCommerce on EVM-compatible chains. OathLock aligns incentives with a **seller-favored, fraud-resistant design**, while keeping **all transaction events and disputes transparent on-chain** via attestations.
 
 
-## Just deployed to ...
+## Just deployed to Mainnet
 
 ### Flow EVM Mainnet
 <img width="165" height="62" alt="image" src="https://github.com/user-attachments/assets/07105451-c5d8-4641-997b-c00cc3aca5b6" />
@@ -21,7 +21,7 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
 
 ---
 
-## 🌐 Demo
+## 🌐 You want to take a look? Here is!
 
 - **E-commerce demo:** <https://oathlock.ngrok.io/ui/ethereum-collection.html>
 - **App URL:** <https://oathlock.ngrok.io>
