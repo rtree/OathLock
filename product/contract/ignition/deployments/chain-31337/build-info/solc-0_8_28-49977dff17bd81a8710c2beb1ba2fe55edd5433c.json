@@ -1,10 +1,10 @@
 {
   "_format": "hh3-sol-build-info-1",
-  "id": "solc-0_8_28-9c5d508ca7a179a1e6e42fdda2639f7b929530b3",
+  "id": "solc-0_8_28-49977dff17bd81a8710c2beb1ba2fe55edd5433c",
   "solcVersion": "0.8.28",
   "solcLongVersion": "0.8.28+commit.7893614a",
   "userSourceNameMap": {
-    "contracts/Counter.sol": "project/contracts/Counter.sol"
+    "contracts/Counter2.sol": "project/contracts/Counter2.sol"
   },
   "input": {
     "language": "Solidity",
@@ -31,8 +31,8 @@
       "remappings": []
     },
     "sources": {
-      "project/contracts/Counter.sol": {
-        "content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.28;\n\ncontract Counter {\n  uint public x;\n\n  event Increment(uint by);\n\n  function inc() public {\n    x++;\n    emit Increment(1);\n  }\n\n  function incBy(uint by) public {\n    require(by > 0, \"incBy: increment should be positive\");\n    x += by;\n    emit Increment(by);\n  }\n}\n"
+      "project/contracts/Counter2.sol": {
+        "content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity ^0.8.28;\n\ncontract Counter2 {\n  uint public x;\n\n  event Increment(uint by);\n\n  function inc() public {\n    x++;\n    emit Increment(1);\n  }\n\n  function incBy(uint by) public {\n    require(by > 0, \"incBy: increment should be positive\");\n    x += by;\n    emit Increment(by);\n  }\n}\n"
       }
     }
   }
