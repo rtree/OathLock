@@ -121,4 +121,7 @@ Let's draw eCommerce from Web2 to Web3, where all transactions are accmulating f
 
 </details>
 
+## Our team
+
+We are team of 20+ years experience of a programmer in Financial industry + an entrepreneur of founding many companies. 
 ---
