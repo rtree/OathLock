@@ -8,6 +8,8 @@ import {
   sellerShip,
   getOath,
   parseOathIdFromLogs,
+  buyerApprove,
+  buyerDispute,
   CONTRACTS, 
   formatUSDCAmount, 
   publicClient
@@ -34,6 +36,9 @@ const DepositPage = () => {
   const [oathData, setOathData] = useState(null)
   const [isSellerView, setIsSellerView] = useState(false)
   const [trackingNumber, setTrackingNumber] = useState('')
+  const [showDisputeForm, setShowDisputeForm] = useState(false)
+  const [disputeCategory, setDisputeCategory] = useState(0) // 0:Counterfeit, 1:Damaged, 2:Undelivered
+  const [evidenceURL, setEvidenceURL] = useState('')
 
   // Demo seller address (using checksummed address)
   const DEMO_SELLER = getAddress('0x5E9041E731E10727d923d79b1e83290f6E83a221')
@@ -226,6 +231,93 @@ const DepositPage = () => {
     }
   }
 
+  const handleBuyerApprove = async () => {
+    if (!isConnected || !walletClient || !account) {
+      alert('Please connect your wallet first')
+      return
+    }
+
+    if (!urlOathId) {
+      alert('No oath ID found in URL')
+      return
+    }
+
+    try {
+      setIsProcessing(true)
+      setCurrentStep('Confirming receipt...')
+
+      const hash = await buyerApprove(walletClient, account, BigInt(urlOathId))
+      setTransactionHash(hash)
+      
+      setCurrentStep('Waiting for confirmation...')
+      await publicClient.waitForTransactionReceipt({ hash })
+      
+      setCurrentStep('Item receipt confirmed!')
+      
+      // Refresh oath data
+      await loadOathData(urlOathId)
+      
+      setTimeout(() => {
+        setCurrentStep('')
+        setTransactionHash('')
+      }, 5000)
+      
+    } catch (error) {
+      console.error('Error confirming receipt:', error)
+      alert('Failed to confirm receipt: ' + error.message)
+    } finally {
+      setIsProcessing(false)
+    }
+  }
+
+  const handleDisputeSubmit = async () => {
+    if (!isConnected || !walletClient || !account) {
+      alert('Please connect your wallet first')
+      return
+    }
+
+    if (!urlOathId) {
+      alert('No oath ID found in URL')
+      return
+    }
+
+    if (!evidenceURL.trim()) {
+      alert('Please provide evidence URL for the dispute')
+      return
+    }
+
+    try {
+      setIsProcessing(true)
+      setCurrentStep('Filing dispute...')
+
+      // Create evidence hash from URL
+      const evidenceHash = keccak256(toHex(evidenceURL))
+
+      const hash = await buyerDispute(walletClient, account, BigInt(urlOathId), disputeCategory, evidenceHash, evidenceURL)
+      setTransactionHash(hash)
+      
+      setCurrentStep('Waiting for confirmation...')
+      await publicClient.waitForTransactionReceipt({ hash })
+      
+      setCurrentStep('Dispute filed successfully!')
+      setShowDisputeForm(false)
+      
+      // Refresh oath data
+      await loadOathData(urlOathId)
+      
+      setTimeout(() => {
+        setCurrentStep('')
+        setTransactionHash('')
+      }, 5000)
+      
+    } catch (error) {
+      console.error('Error filing dispute:', error)
+      alert('Failed to file dispute: ' + error.message)
+    } finally {
+      setIsProcessing(false)
+    }
+  }
+
   const truncateHash = (hash) => {
     if (!hash) return ''
     return `${hash.slice(0, 8)}...${hash.slice(-6)}`
@@ -384,6 +476,92 @@ const DepositPage = () => {
                   {isSellerView && (
                     <div className="tracking-display">
                       Tracking Hash: {oathData[7]}
+                    </div>
+                  )}
+                  
+                  {/* Buyer actions for shipped items */}
+                  {!isSellerView && oathData[9] === 1 && (
+                    <div className="buyer-actions">
+                      <div className="buyer-buttons">
+                        <button 
+                          className={`status-btn received-btn ${(!isConnected || isProcessing) ? 'disabled' : 'active'}`}
+                          onClick={handleBuyerApprove}
+                          disabled={!isConnected || isProcessing}
+                        >
+                          {isProcessing && currentStep.includes('receipt') ? 'Processing...' : 'Received'}
+                        </button>
+                        <button 
+                          className={`status-btn dispute-btn ${(!isConnected || isProcessing) ? 'disabled' : 'active'}`}
+                          onClick={() => setShowDisputeForm(!showDisputeForm)}
+                          disabled={!isConnected || isProcessing}
+                        >
+                          RAISE DISPUTE
+                        </button>
+                      </div>
+                      
+                      {/* Dispute Form */}
+                      {showDisputeForm && (
+                        <div className="dispute-form">
+                          <h4>File a Dispute</h4>
+                          <div className="dispute-categories">
+                            <label className="dispute-category">
+                              <input
+                                type="radio"
+                                name="disputeCategory"
+                                value={0}
+                                checked={disputeCategory === 0}
+                                onChange={() => setDisputeCategory(0)}
+                              />
+                              <span>Counterfeit - Product is not authentic</span>
+                            </label>
+                            <label className="dispute-category">
+                              <input
+                                type="radio"
+                                name="disputeCategory"
+                                value={1}
+                                checked={disputeCategory === 1}
+                                onChange={() => setDisputeCategory(1)}
+                              />
+                              <span>Damaged - Product arrived broken</span>
+                            </label>
+                            <label className="dispute-category">
+                              <input
+                                type="radio"
+                                name="disputeCategory"
+                                value={2}
+                                checked={disputeCategory === 2}
+                                onChange={() => setDisputeCategory(2)}
+                              />
+                              <span>Undelivered - Product not received</span>
+                            </label>
+                          </div>
+                          <input
+                            type="text"
+                            className="evidence-input"
+                            placeholder="Evidence URL (photos, documentation, etc.)"
+                            value={evidenceURL}
+                            onChange={(e) => setEvidenceURL(e.target.value)}
+                          />
+                          <div className="dispute-form-buttons">
+                            <button 
+                              className="submit-dispute-btn"
+                              onClick={handleDisputeSubmit}
+                              disabled={!evidenceURL.trim() || isProcessing}
+                            >
+                              {isProcessing && currentStep.includes('dispute') ? 'Filing...' : 'Submit Dispute'}
+                            </button>
+                            <button 
+                              className="cancel-dispute-btn"
+                              onClick={() => {
+                                setShowDisputeForm(false)
+                                setEvidenceURL('')
+                              }}
+                            >
+                              Cancel
+                            </button>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>

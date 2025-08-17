@@ -103,6 +103,27 @@ export const OATH_LOCK_EAS_ABI = [
   },
   {
     "inputs": [
+      {"internalType": "uint256", "name": "id", "type": "uint256"}
+    ],
+    "name": "buyerApprove",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "id", "type": "uint256"},
+      {"internalType": "uint8", "name": "category", "type": "uint8"},
+      {"internalType": "bytes32", "name": "evidenceHash", "type": "bytes32"},
+      {"internalType": "string", "name": "evidenceURI", "type": "string"}
+    ],
+    "name": "buyerDispute",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
       {"internalType": "uint256", "name": "", "type": "uint256"}
     ],
     "name": "oaths",
@@ -141,6 +162,23 @@ export const OATH_LOCK_EAS_ABI = [
       {"indexed": false, "internalType": "bytes32", "name": "trackingHash", "type": "bytes32"}
     ],
     "name": "SellerShipped",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {"indexed": true, "internalType": "uint256", "name": "id", "type": "uint256"}
+    ],
+    "name": "BuyerApproved",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {"indexed": true, "internalType": "uint256", "name": "id", "type": "uint256"},
+      {"indexed": false, "internalType": "string", "name": "evidenceURL", "type": "string"}
+    ],
+    "name": "BuyerDisputed",
     "type": "event"
   }
 ]
@@ -359,5 +397,46 @@ export const connectWallet = async () => {
     }
   } else {
     throw new Error('MetaMask is not installed')
+  }
+}
+
+// Buyer functions
+export const buyerApprove = async (walletClient, account, oathId) => {
+  try {
+    const checksummedAccount = getAddress(account)
+    
+    const { request } = await publicClient.simulateContract({
+      address: CONTRACTS.OATH_LOCK_EAS,
+      abi: OATH_LOCK_EAS_ABI,
+      functionName: 'buyerApprove',
+      args: [oathId],
+      account: checksummedAccount
+    })
+    
+    const hash = await walletClient.writeContract(request)
+    return hash
+  } catch (error) {
+    console.error('Error buyer approving:', error)
+    throw error
+  }
+}
+
+export const buyerDispute = async (walletClient, account, oathId, category, evidenceHash, evidenceURI) => {
+  try {
+    const checksummedAccount = getAddress(account)
+    
+    const { request } = await publicClient.simulateContract({
+      address: CONTRACTS.OATH_LOCK_EAS,
+      abi: OATH_LOCK_EAS_ABI,
+      functionName: 'buyerDispute',
+      args: [oathId, category, evidenceHash, evidenceURI],
+      account: checksummedAccount
+    })
+    
+    const hash = await walletClient.writeContract(request)
+    return hash
+  } catch (error) {
+    console.error('Error buyer disputing:', error)
+    throw error
   }
 }

@@ -943,3 +943,177 @@
 .oath-info div:last-child {
   margin-bottom: 0;
 }
+
+/* Buyer Actions Styles */
+.buyer-actions {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #d1fae5;
+}
+
+.buyer-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.received-btn {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: white !important;
+  border: none !important;
+  min-width: 120px;
+}
+
+.received-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669, #047857) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.dispute-btn {
+  background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+  color: white !important;
+  border: none !important;
+  min-width: 140px;
+}
+
+.dispute-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Dispute Form Styles */
+.dispute-form {
+  background: #fef2f2;
+  border: 2px solid #fecaca;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 15px;
+  text-align: left;
+}
+
+.dispute-form h4 {
+  color: #991b1b;
+  margin: 0 0 15px 0;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.dispute-categories {
+  margin-bottom: 15px;
+}
+
+.dispute-category {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.dispute-category:hover {
+  background: #fee2e2;
+}
+
+.dispute-category input[type="radio"] {
+  margin-right: 8px;
+  accent-color: #dc2626;
+}
+
+.evidence-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #fca5a5;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.evidence-input:focus {
+  outline: none;
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.dispute-form-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.submit-dispute-btn {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 120px;
+}
+
+.submit-dispute-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #b91c1c, #991b1b);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+}
+
+.submit-dispute-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.cancel-dispute-btn {
+  background: #6b7280;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 80px;
+}
+
+.cancel-dispute-btn:hover {
+  background: #4b5563;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(107, 114, 128, 0.3);
+}
+
+/* Responsive Design for Buyer Actions */
+@media (max-width: 768px) {
+  .buyer-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .received-btn,
+  .dispute-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .dispute-form-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .submit-dispute-btn,
+  .cancel-dispute-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}
