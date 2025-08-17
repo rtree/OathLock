@@ -22,9 +22,8 @@ const EASSchemas = buildModule("EASSchemas", (m) => {
       resolver           = "0x0000000000000000000000000000000000000000";
       eas                = "";
   }
-  const SCHEMA_REGISTRY_ADDRESS = m.getParameter("SCHEMA_REGISTRY_ADDRESS", schemaRegistryAddr);
+  const SCHEMA_REGISTRY_ADDRESS = schemaRegistryAddr
   const registry = m.contractAt("ISchemaRegistry", SCHEMA_REGISTRY_ADDRESS);
-
 
   const ORDER_OPENED =
     "uint256 oathId,address buyer,address seller,address token,uint256 amount,uint64 expiry,uint64 shipDeadline,bytes32 trackingHash";
@@ -37,20 +36,17 @@ const EASSchemas = buildModule("EASSchemas", (m) => {
   const SETTLEMENT_EXECUTED =
     "uint256 oathId,address beneficiary,uint8 outcome,string notesURI";
 
-  const EAS_ADDRESS             = m.getParameter("EAS_ADDRESS", eas);
-  const UID_ORDER_OPENED        = m.call(registry, "register", [ORDER_OPENED, resolver, false]);
-  const UID_SHIPMENT_DECLARED   = m.call(registry, "register", [SHIPMENT_DECLARED, resolver, false]);
-  const UID_DISPUTE_FILED       = m.call(registry, "register", [DISPUTE_FILED, resolver, false]);
-  const UID_REPUTATION_TAG      = m.call(registry, "register", [REPUTATION_TAG, resolver, false]);
-  const UID_SETTLEMENT_EXECUTED = m.call(registry, "register", [SETTLEMENT_EXECUTED, resolver, false]);
+  const EAS_ADDRESS             = eas;
+  const easContract             = m.contractAt("IEAS", EAS_ADDRESS);
+  // const UID_ORDER_OPENED        = m.call(registry, "register", [ORDER_OPENED, resolver, false]);
+  // const UID_SHIPMENT_DECLARED   = m.call(registry, "register", [SHIPMENT_DECLARED, resolver, false]);
+  // const UID_DISPUTE_FILED       = m.call(registry, "register", [DISPUTE_FILED, resolver, false]);
+  // const UID_REPUTATION_TAG      = m.call(registry, "register", [REPUTATION_TAG, resolver, false]);
+  // const UID_SETTLEMENT_EXECUTED = m.call(registry, "register", [SETTLEMENT_EXECUTED, resolver, false]);
   
   return {
-    EAS_ADDRESS,
-    UID_ORDER_OPENED,
-    UID_SHIPMENT_DECLARED,
-    UID_DISPUTE_FILED,
-    UID_REPUTATION_TAG,
-    UID_SETTLEMENT_EXECUTED,
+    registry,
+    easContract,
   };
 });
 
