@@ -8,6 +8,7 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
 ## Just deployed to Mainnet
 
 ### Flow EVM Mainnet
+
 <img width="165" height="62" alt="image" src="https://github.com/user-attachments/assets/07105451-c5d8-4641-997b-c00cc3aca5b6" />
 
 [Link to contract address](https://github.com/rtree/OathLock/blob/main/product/contract/ignition/deployments/chain-747/deployed_addresses.json)
@@ -29,20 +30,29 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
 ```
 
 ### ZCirtuit Mainnet
+
 <img width="139" height="55" alt="image" src="https://github.com/user-attachments/assets/4bbd05b1-d251-4354-aff8-2d83fb42a580" /><img width="59" height="55" alt="image" src="https://github.com/user-attachments/assets/bdc10076-7214-4bd9-b4f9-4c1f39a9f057" />
+
+```json
+{"Zircuit Testnet":
+  {
+    "OathLockModule#IERC20": "0x3b952c8C9C44e8Fe201e2b26F6B2200203214cfF",
+    "OathLockModule#OathLock": "0xd7C2a36786124738d54AdB710D59abc8d8CAca75"
+  },
+}
+```
 
 [Link to contract address](https://github.com/rtree/OathLock/blob/main/product/contract/ignition/deployments/chain-48900/deployed_addresses.json)
 
 
-## 🌐 You want to take a look? Here is!
+## 🌐 You want to take a look? Here is! ✨
 
-- **E-commerce demo:** <https://oathlock.ngrok.io/ui/ethereum-collection.html>
-- **App URL:** <https://oathlock.ngrok.io>
-- Powerpoint: <https://github.com/rtree/OathLock/blob/main/presentation/Zircuit%20presentation.pdf>
+- **Live demo**: <https://oathlock.ngrok.io/ui/ethereum-collection.html>
+- **Powerpoint**: <https://github.com/rtree/OathLock/blob/main/presentation/Zircuit%20presentation.pdf>
 
-## ✨ MVP — What works today
+### MVP — What works today
 
-### How to use
+#### How to use
 
 1. **Create Oath (Buyer):** Deposit **USDC** + `(seller, expiry)` as an *Oath*. Check seller history via on-chain **attestations**.
 2. **Ship (Seller):** Review Oath, then press **“Shipped”** with a **tracking hash** (shipping deadline enforced).
