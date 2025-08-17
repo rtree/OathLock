@@ -588,35 +588,85 @@
 }
 
 .test-section {
-  margin-bottom: 16px;
-  padding: 12px;
-  background: rgba(16, 185, 129, 0.05);
+  margin: 20px 0;
+  padding: 16px;
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 152, 0, 0.05));
   border-radius: 12px;
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.2);
 }
 
-.test-btn {
-  background: linear-gradient(135deg, #10b981, #059669);
+.ship-section {
+  margin: 20px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(22, 163, 74, 0.05));
+  border-radius: 12px;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  text-align: left;
+}
+
+.ship-section h4 {
+  margin: 0 0 12px 0;
+  color: #15803d;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tracking-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+}
+
+.tracking-input:focus {
+  outline: none;
+  border-color: rgba(34, 197, 94, 0.6);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.tracking-input::placeholder {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.test-btn, .ship-btn {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 12px;
-  font-size: 12px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
-  margin-bottom: 6px;
+  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+}
+
+.ship-btn {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
   width: 100%;
 }
 
-.test-btn:hover {
-  background: linear-gradient(135deg, #059669, #047857);
+.test-btn:hover, .ship-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
 }
 
-.test-btn:disabled {
+.test-btn:hover {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+}
+
+.ship-btn:hover {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.test-btn:disabled, .ship-btn:disabled {
   background: linear-gradient(135deg, #9ca3af, #6b7280);
   cursor: not-allowed;
   transform: none;
@@ -800,4 +850,96 @@
   .price {
     font-size: 28px;
   }
+}
+
+/* Seller specific styles */
+.seller-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.tracking-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tracking-input label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 14px;
+}
+
+.tracking-input input {
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  background: white;
+}
+
+.tracking-input input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.tracking-input input:disabled {
+  background: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.ship-btn {
+  background: linear-gradient(135deg, #10b981, #059669) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.ship-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #059669, #047857) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+.status-message {
+  text-align: center;
+  padding: 20px;
+  background: #f0fdf4;
+  border: 2px solid #bbf7d0;
+  border-radius: 12px;
+  margin-top: 15px;
+}
+
+.shipped-status {
+  font-size: 16px;
+  font-weight: 600;
+  color: #166534;
+  margin-bottom: 10px;
+}
+
+.tracking-display {
+  font-size: 12px;
+  color: #16a34a;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.oath-info {
+  margin-top: 10px;
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.oath-info div {
+  margin-bottom: 5px;
+}
+
+.oath-info div:last-child {
+  margin-bottom: 0;
 }

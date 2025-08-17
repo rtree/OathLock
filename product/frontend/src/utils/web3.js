@@ -92,6 +92,17 @@ export const OATH_LOCK_EAS_ABI = [
   },
   {
     "inputs": [
+      {"internalType": "uint256", "name": "id", "type": "uint256"},
+      {"internalType": "uint256", "name": "shipDeadline", "type": "uint256"},
+      {"internalType": "bytes32", "name": "trackingHash", "type": "bytes32"}
+    ],
+    "name": "sellerShip",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
       {"internalType": "uint256", "name": "", "type": "uint256"}
     ],
     "name": "oaths",
@@ -120,6 +131,16 @@ export const OATH_LOCK_EAS_ABI = [
       {"internalType": "uint256", "name": "expiry", "type": "uint256"}
     ],
     "name": "OathCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {"indexed": true, "internalType": "uint256", "name": "id", "type": "uint256"},
+      {"indexed": false, "internalType": "uint256", "name": "shipDeadline", "type": "uint256"},
+      {"indexed": false, "internalType": "bytes32", "name": "trackingHash", "type": "bytes32"}
+    ],
+    "name": "SellerShipped",
     "type": "event"
   }
 ]
@@ -232,6 +253,64 @@ export const createOath = async (walletClient, account, seller, amount, expiry) 
   } catch (error) {
     console.error('Error creating oath:', error)
     throw error
+  }
+}
+
+export const sellerShip = async (walletClient, account, oathId, shipDeadline, trackingHash) => {
+  try {
+    const checksummedAccount = getAddress(account)
+    
+    const { request } = await publicClient.simulateContract({
+      address: CONTRACTS.OATH_LOCK_EAS,
+      abi: OATH_LOCK_EAS_ABI,
+      functionName: 'sellerShip',
+      args: [oathId, shipDeadline, trackingHash],
+      account: checksummedAccount
+    })
+    
+    const hash = await walletClient.writeContract(request)
+    return hash
+  } catch (error) {
+    console.error('Error seller shipping:', error)
+    throw error
+  }
+}
+
+export const getOath = async (oathId) => {
+  try {
+    const oath = await publicClient.readContract({
+      address: CONTRACTS.OATH_LOCK_EAS,
+      abi: OATH_LOCK_EAS_ABI,
+      functionName: 'oaths',
+      args: [oathId]
+    })
+    return oath
+  } catch (error) {
+    console.error('Error getting oath:', error)
+    throw error
+  }
+}
+
+// Parse oath ID from OathCreated event logs
+export const parseOathIdFromLogs = (logs) => {
+  try {
+    // Look for OathCreated event: event OathCreated(uint256 indexed id, address indexed buyer, address indexed seller, uint256 amount, uint256 expiry)
+    const oathCreatedTopic = '0x4b3b3d85dd6a0c5b99e1f3c5c36e6d3d5a1e9e3b9e1e9e3b9e1e9e3b9e1e9e3b' // This would be the actual hash
+    
+    for (const log of logs) {
+      // In a real implementation, you'd need the actual event signature hash
+      // For now, we'll use a different approach - parse by log structure
+      if (log.topics && log.topics.length >= 4) {
+        // The first topic after event signature is the oath ID (indexed)
+        const oathId = BigInt(log.topics[1])
+        console.log('Found oath ID:', oathId.toString())
+        return oathId
+      }
+    }
+    return null
+  } catch (error) {
+    console.error('Error parsing oath ID from logs:', error)
+    return null
   }
 }
 

@@ -141,6 +141,23 @@ export const createOath = async (seller, amount, expiry) => {
   }
 }
 
+export const sellerShip = async (oathId, shipDeadline, trackingHash) => {
+  try {
+    const hash = await writeContract(config, {
+      address: CONTRACTS.OATH_LOCK_EAS,
+      abi: OATH_LOCK_EAS_ABI,
+      functionName: 'sellerShip',
+      args: [oathId, shipDeadline, trackingHash]
+    })
+    
+    const receipt = await waitForTransactionReceipt(config, { hash })
+    return receipt
+  } catch (error) {
+    console.error('Failed to ship oath:', error)
+    throw error
+  }
+}
+
 export const getOath = async (oathId) => {
   try {
     const oath = await readContract(config, {

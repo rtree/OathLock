@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useWeb3 } from '../contexts/Web3Context'
 import WalletConnect from './WalletConnect'
 import { 
   mintUSDC, 
   approveUSDC, 
-  createOath, 
+  createOath,
+  sellerShip,
+  getOath,
+  parseOathIdFromLogs,
   CONTRACTS, 
   formatUSDCAmount, 
   publicClient
 } from '../utils/web3'
-import { getAddress } from 'viem'
+import { getAddress, keccak256, toHex } from 'viem'
 import './DepositPage.css'
 
 const DepositPage = () => {
@@ -27,9 +30,42 @@ const DepositPage = () => {
   const [transactionHash, setTransactionHash] = useState('')
   const [currentStep, setCurrentStep] = useState('')
   const [oathId, setOathId] = useState('')
+  const [urlOathId, setUrlOathId] = useState(null)
+  const [oathData, setOathData] = useState(null)
+  const [isSellerView, setIsSellerView] = useState(false)
+  const [trackingNumber, setTrackingNumber] = useState('')
 
   // Demo seller address (using checksummed address)
-  const DEMO_SELLER = getAddress('0x742d35Cc6634C0532925a3b8D1b9d391C2c2A0Ac')
+  const DEMO_SELLER = getAddress('0x5E9041E731E10727d923d79b1e83290f6E83a221')
+
+  // Check URL for oath ID on component mount
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const oathIdParam = urlParams.get('oathId')
+    if (oathIdParam) {
+      setUrlOathId(oathIdParam)
+      loadOathData(oathIdParam)
+    }
+  }, [])
+
+  // Check if current user is seller when wallet connects
+  useEffect(() => {
+    if (account && oathData && account.toLowerCase() === oathData[2].toLowerCase()) {
+      setIsSellerView(true)
+    } else {
+      setIsSellerView(false)
+    }
+  }, [account, oathData])
+
+  const loadOathData = async (oathId) => {
+    try {
+      const oath = await getOath(BigInt(oathId))
+      setOathData(oath)
+      console.log('Loaded oath data:', oath)
+    } catch (error) {
+      console.error('Error loading oath data:', error)
+    }
+  }
 
   const handleMintUSDC = async () => {
     if (!isConnected || !walletClient || !account) {
@@ -62,6 +98,57 @@ const DepositPage = () => {
     } catch (error) {
       console.error('Error minting USDC:', error)
       alert('Failed to mint USDC: ' + error.message)
+    } finally {
+      setIsProcessing(false)
+    }
+  }
+
+  const handleSellerShip = async () => {
+    if (!isConnected || !walletClient || !account) {
+      alert('Please connect your wallet first')
+      return
+    }
+
+    if (!urlOathId) {
+      alert('No oath ID found in URL')
+      return
+    }
+
+    if (!trackingNumber.trim()) {
+      alert('Please enter a tracking number')
+      return
+    }
+
+    try {
+      setIsProcessing(true)
+      setCurrentStep('Preparing shipment...')
+
+      // Set ship deadline to 7 days from now
+      const shipDeadline = Math.floor(Date.now() / 1000) + (7 * 24 * 60 * 60)
+      
+      // Create tracking hash from tracking number
+      const trackingHash = keccak256(toHex(trackingNumber))
+
+      setCurrentStep('Calling seller ship...')
+      const hash = await sellerShip(walletClient, account, BigInt(urlOathId), BigInt(shipDeadline), trackingHash)
+      setTransactionHash(hash)
+      
+      setCurrentStep('Waiting for confirmation...')
+      await publicClient.waitForTransactionReceipt({ hash })
+      
+      setCurrentStep('Item shipped successfully!')
+      
+      // Refresh oath data
+      await loadOathData(urlOathId)
+      
+      setTimeout(() => {
+        setCurrentStep('')
+        setTransactionHash('')
+      }, 5000)
+      
+    } catch (error) {
+      console.error('Error shipping item:', error)
+      alert('Failed to ship item: ' + error.message)
     } finally {
       setIsProcessing(false)
     }
@@ -110,27 +197,26 @@ const DepositPage = () => {
       const receipt = await publicClient.waitForTransactionReceipt({ hash: createHash })
       
       // Parse the OathCreated event to get the oath ID
+      let parsedOathId = null
       try {
-        const logs = receipt.logs
-        // Look for OathCreated event in logs
-        for (const log of logs) {
-          if (log.topics[0] === '0x8b8c8f2c0c8b8a8f8e8d8c8b8a8988878685848382818079787776757473727170') {
-            // This is a simplified way - in production you'd properly decode the event
-            console.log('Oath created, log:', log)
-          }
-        }
+        parsedOathId = parseOathIdFromLogs(receipt.logs)
       } catch (e) {
         console.log('Could not parse oath ID from logs')
       }
       
       setCurrentStep('Oath created successfully!')
-      setOathId(createHash) // Using tx hash as ID for demo
-      await refreshBalances()
       
-      setTimeout(() => {
-        setCurrentStep('')
-        setTransactionHash('')
-      }, 5000)
+      if (parsedOathId) {
+        setOathId(parsedOathId.toString())
+        // Redirect to URL with oath ID
+        window.location.href = `${window.location.origin}${window.location.pathname}?oathId=${parsedOathId.toString()}`
+      } else {
+        // Fallback: use transaction hash as ID for demo
+        setOathId(createHash)
+        window.location.href = `${window.location.origin}${window.location.pathname}?oathId=${createHash}`
+      }
+      
+      await refreshBalances()
       
     } catch (error) {
       console.error('Error creating deposit:', error)
@@ -177,6 +263,17 @@ const DepositPage = () => {
           {oathId && (
             <div className="oath-id">
               <span>Oath ID: {oathId.slice(0, 16)}...</span>
+            </div>
+          )}
+          {urlOathId && (
+            <div className="oath-id">
+              <span>Current Oath ID: {urlOathId}</span>
+            </div>
+          )}
+          {oathData && (
+            <div className="oath-info">
+              <div>Status: {['Created', 'Shipped', 'Delivered', 'Disputed', 'Resolved'][oathData[9]]}</div>
+              <div>Amount: {formatUSDCAmount(oathData[3])} USDC</div>
             </div>
           )}
         </div>
@@ -231,8 +328,8 @@ const DepositPage = () => {
               <div className="price">$0.0001</div>
               <div className="price-note">Flow Testnet • MockUSDC</div>
               
-              {/* Test USDC Section */}
-              {isConnected && usdcBalance < DEPOSIT_AMOUNT && (
+              {/* Test USDC Section - only show for buyers without oath ID */}
+              {isConnected && !urlOathId && usdcBalance < DEPOSIT_AMOUNT && (
                 <div className="test-section">
                   <button 
                     className="test-btn"
@@ -245,17 +342,54 @@ const DepositPage = () => {
                 </div>
               )}
               
-              <div className="status-buttons">
-                <button 
-                  className={`status-btn ${(!isConnected || isProcessing || usdcBalance < DEPOSIT_AMOUNT) ? 'disabled' : 'active'}`}
-                  onClick={handleDeposit}
-                  disabled={!isConnected || isProcessing || usdcBalance < DEPOSIT_AMOUNT}
-                >
-                  {isProcessing ? 'Processing...' : 'Deposit'}
-                </button>
-              </div>
+              {/* Seller Ship Section */}
+              {urlOathId && isSellerView && oathData && oathData[9] === 0 && (
+                <div className="ship-section">
+                  <h4>Ship Item</h4>
+                  <input
+                    className="tracking-input"
+                    type="text"
+                    value={trackingNumber}
+                    onChange={(e) => setTrackingNumber(e.target.value)}
+                    placeholder="Enter tracking number (e.g., 1Z999AA1234567890)"
+                    disabled={isProcessing}
+                  />
+                  <button 
+                    className={`ship-btn ${(!isConnected || isProcessing || !trackingNumber.trim()) ? 'disabled' : ''}`}
+                    onClick={handleSellerShip}
+                    disabled={!isConnected || isProcessing || !trackingNumber.trim()}
+                  >
+                    {isProcessing ? 'Processing...' : 'Send (Ship)'}
+                  </button>
+                </div>
+              )}
               
-              {isConnected && (
+              {/* Buyer Deposit Section - only show if no oath ID or not seller view */}
+              {!urlOathId && (
+                <div className="status-buttons">
+                  <button 
+                    className={`status-btn ${(!isConnected || isProcessing || usdcBalance < DEPOSIT_AMOUNT) ? 'disabled' : 'active'}`}
+                    onClick={handleDeposit}
+                    disabled={!isConnected || isProcessing || usdcBalance < DEPOSIT_AMOUNT}
+                  >
+                    {isProcessing ? 'Processing...' : 'Deposit'}
+                  </button>
+                </div>
+              )}
+              
+              {/* Status message for completed oath */}
+              {urlOathId && oathData && oathData[9] === 1 && (
+                <div className="status-message">
+                  <div className="shipped-status">✅ Item has been shipped!</div>
+                  {isSellerView && (
+                    <div className="tracking-display">
+                      Tracking Hash: {oathData[7]}
+                    </div>
+                  )}
+                </div>
+              )}
+              
+              {isConnected && !urlOathId && (
                 <div className="balance-info">
                   <div className="balance-item">
                     <span>Your Balance: {formatUSDCAmount(usdcBalance)} USDC</span>

@@ -55,6 +55,17 @@ export const OATH_LOCK_EAS_ABI = [
   },
   {
     "inputs": [
+      { "internalType": "uint256", "name": "id", "type": "uint256" },
+      { "internalType": "uint256", "name": "shipDeadline", "type": "uint256" },
+      { "internalType": "bytes32", "name": "trackingHash", "type": "bytes32" }
+    ],
+    "name": "sellerShip",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
       { "internalType": "uint256", "name": "", "type": "uint256" }
     ],
     "name": "oaths",
@@ -83,6 +94,15 @@ export const OATH_LOCK_EAS_ABI = [
       { "indexed": false, "internalType": "uint256", "name": "expiry", "type": "uint256" }
     ],
     "name": "OathCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      { "indexed": true, "internalType": "uint256", "name": "id", "type": "uint256" },
+      { "indexed": false, "internalType": "bytes32", "name": "trackingHash", "type": "bytes32" }
+    ],
+    "name": "SellerShipped",
     "type": "event"
   }
 ]
