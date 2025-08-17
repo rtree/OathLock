@@ -12,6 +12,22 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
 
 [Link to contract address](https://github.com/rtree/OathLock/blob/main/product/contract/ignition/deployments/chain-747/deployed_addresses.json)
 
+```json
+{"Flow EVM Testnet":
+  {
+    "OathLockModule#IEAS": "0xBCF2dA8f82fb032A2474c92Ec5b70C95A83fc0cc",
+    "OathLockModule#ISchemaRegistry": "0x97900F59828Da4187607Cb8F84f49e3944199d18",
+    "OathLockModule#MockUSDC": "0xFB80FF7525935fD13775B4feE34fd67022a5CA68",
+    "OathLockModule#OathLockEAS": "0x42747984FD172a03550Ea58bEC0f91c690f794a9"
+  },
+  "Flow EVM Mainnet":
+  {
+    "OathLockModule#IERC20": "0xF1815bd50389c46847f0Bda824eC8da914045D14",
+    "OathLockModule#OathLock": "0x9AFB5F28E2317D75212A503eECf02DcE4A7B6F0E"
+  },
+}
+```
+
 ### ZCirtuit Mainnet
 <img width="139" height="55" alt="image" src="https://github.com/user-attachments/assets/4bbd05b1-d251-4354-aff8-2d83fb42a580" /><img width="59" height="55" alt="image" src="https://github.com/user-attachments/assets/bdc10076-7214-4bd9-b4f9-4c1f39a9f057" />
 
