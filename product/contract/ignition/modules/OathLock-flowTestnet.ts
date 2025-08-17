@@ -37,25 +37,33 @@ const OathLockModule = buildModule("OathLockModule", (m) => {
   const registry = m.contractAt("ISchemaRegistry", schemaRegistryAddr);
 
   // Schema definitions
-  const ORDER_OPENED =
-    "uint256 oathId,address buyer,address seller,address token,uint256 amount,uint64 expiry,uint64 shipDeadline,bytes32 trackingHash";
-  const SHIPMENT_DECLARED =
-    "uint256 oathId,bytes32 trackingHash,uint64 shippedAt,string carrierCode";
-  const DISPUTE_FILED =
-    "uint256 oathId,address buyer,address seller,uint8 category,bytes32 evidenceHash,string evidenceURI";
-  const REPUTATION_TAG =
-    "uint256 oathId,address subject,uint8 kind,int8 polarity,uint8 category";
-  const SETTLEMENT_EXECUTED =
-    "uint256 oathId,address beneficiary,uint8 outcome,string notesURI";
+  // const ORDER_OPENED =
+  //   "uint256 oathId,address buyer,address seller,address token,uint256 amount,uint64 expiry,uint64 shipDeadline,bytes32 trackingHash";
+  // const SHIPMENT_DECLARED =
+  //   "uint256 oathId,bytes32 trackingHash,uint64 shippedAt,string carrierCode";
+  // const DISPUTE_FILED =
+  //   "uint256 oathId,address buyer,address seller,uint8 category,bytes32 evidenceHash,string evidenceURI";
+  // const REPUTATION_TAG =
+  //   "uint256 oathId,address subject,uint8 kind,int8 polarity,uint8 category";
+  // const SETTLEMENT_EXECUTED =
+  //   "uint256 oathId,address beneficiary,uint8 outcome,string notesURI";
+  const SCHEMAS ={
+    "ORDER_OPENED": "0xff882f8b3aa4e431c6b6de0b9b340949f4936802c9ee9b15742bb972e5c32077",
+    "SHIPMENT_DECLARED": "0xbbbb0022dd3f65424a4498a03347095b542f76d7b4c3d19529e2a7f384f5fa57",
+    "DISPUTE_FILED": "0xe84bde5f4426c38052411e7f0bbb69b411c7bb51477a014bfaa12b461dfb94be",
+    "REPUTATION_TAG": "0xf6bc7b8f558388212ae8d902de2e592f0873e89688a5ae25da616caedb1f1276",
+    "SETTLEMENT_EXECUTED": "0x74b39c9d6f3db4275f201d2a199c1c02db949fcfcde3ac1cadbc73903cfb004a"
+  }
 
-  // Register schemas (commented out for now - can be done manually)
-  // const UID_ORDER_OPENED        = m.call(registry, "register", [ORDER_OPENED, resolver, false]);
-  // const UID_SHIPMENT_DECLARED   = m.call(registry, "register", [SHIPMENT_DECLARED, resolver, false]);
-  // const UID_DISPUTE_FILED       = m.call(registry, "register", [DISPUTE_FILED, resolver, false]);
-  // const UID_REPUTATION_TAG      = m.call(registry, "register", [REPUTATION_TAG, resolver, false]);
-  // const UID_SETTLEMENT_EXECUTED = m.call(registry, "register", [SETTLEMENT_EXECUTED, resolver, false]);
-
-  const oathLockEAS = m.contract("OathLockEAS", [usdcToken, easContract]);
+  const oathLockEAS = m.contract("OathLockEAS",
+         [usdcToken, 
+          easContract,
+          SCHEMAS.ORDER_OPENED,
+          SCHEMAS.SHIPMENT_DECLARED,
+          SCHEMAS.DISPUTE_FILED,
+          SCHEMAS.REPUTATION_TAG,
+          SCHEMAS.SETTLEMENT_EXECUTED
+         ]);
   
   return { 
     oathLockEAS, 
