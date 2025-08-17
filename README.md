@@ -48,7 +48,7 @@ OathLock — Escrow for Decentralized eCommerce is a trust-minimized escrow cont
 ## 🌐 You want to take a look? Here is! ✨
 
 - **Live demo**: <https://oathlock.ngrok.io/ui/ethereum-collection.html>
-- **Powerpoint**: <https://github.com/rtree/OathLock/blob/main/presentation/Zircuit%20presentation.pdf>
+- **Powerpoint**: <https://github.com/rtree/OathLock/blob/main/presentation/OathLock-presentation>
 
 ### MVP — What works today
 
@@ -149,5 +149,6 @@ Let's draw eCommerce from Web2 to Web3, where all transactions are accmulating f
 
 ## Our team
 
-We are team of 20+ years experience of a programmer in Financial industry + an entrepreneur of founding many companies. 
----
+We are team of 20+ years experience of:
+  - rtree       : a programmer in Financial industry
+  - hanabiradake: an entrepreneur of founding many companies.
