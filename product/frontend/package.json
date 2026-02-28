@@ -13,7 +13,7 @@
     "@wagmi/core": "^2.19.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.8.0",
+    "react-router-dom": "^6.30.3",
     "viem": "^2.33.3"
   },
   "devDependencies": {
@@ -24,6 +24,6 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "vite": "^5.0.8"
+    "vite": "^7.3.1"
   }
 }
